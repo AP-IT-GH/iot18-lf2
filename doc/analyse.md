@@ -74,14 +74,28 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 
 ## Inventarisatie Hardware  
 
-DHT11,DHT22 - Temperatuur & luchtvochtigheid sensor  
-SEN-13637 - Bodemvochtigheid sensor  
-SEN-10972 - pH sensor  
-APDS-9301 - Licht sensor  
-ESP8266 - WiFi Module  
-Raspberry Pi 3  
-PCB  
-Plastic Water Solenoid Valve – 12V – 1/2″ Nominal  
+DHT22 - Temperatuur & luchtvochtigheid sensor:  
+zeer nauwkerige waardemetingen (2-5% afwijking) van temperatuur (-40 to 80°C) en luchtvochtigheid (0-100%)  
+  
+SEN-13637 - Bodemvochtigheid sensor:  
+Waardemeting van de bodemvochtigheid, werking op 3.3V-5V  
+  
+SEN-10972 - pH sensor:  
+  
+APDS-9301 - Licht sensor:  
+  
+Raspberry Pi 3:  
+ingebouwde wifimodule, veel pinnen, ...  
+  
+PCB:  
+Compacte elektrische schakeling die zorgt voor voeding, sensor verbinding, ...    
+  
+Kunststof water magneetventiel – 12V:    
+Dit ventiel wordt gebruikt om het water tegen te houden of juist te laten stromen (aangestuurd door raspberry Pi)  
+  
+SLV-Transformer 60W 12V:  
+Zet de netspanning om naar 12V  
+  
 ## Inventarisatie Software 
 
 Angular 6 & Node.js  
