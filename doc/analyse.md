@@ -80,7 +80,8 @@ SEN-10972 - pH sensor
 APDS-9301 - Licht sensor  
 ESP8266 - WiFi Module  
 Raspberry Pi 3  
-
+PCB  
+Plastic Water Solenoid Valve – 12V – 1/2″ Nominal  
 ## Inventarisatie Software 
 
 Angular 6 & Node.js  
