@@ -105,6 +105,7 @@ Zet de netspanning om naar 12V
 
 Angular 6 & Node.js  
 Python
+Microsoft azure
 
 ## Test document
 
