@@ -1,6 +1,6 @@
 # Analyse
 
-## Functionale analyse project 
+## Functionele analyse project 
 
 ### Beschrijving
 
