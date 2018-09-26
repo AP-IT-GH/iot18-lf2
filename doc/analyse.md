@@ -85,6 +85,9 @@ SEN-13637 - Bodemvochtigheid sensor:
 Waardemeting van de bodemvochtigheid, werking op 3.3V-5V  
   
 SEN-10972 - pH sensor:  
+
+SEN-0204 - Water niveau sensor:
+Meting van waterlevel, 12v, zeer nauwkeurige waarden
   
 APDS-9301 - Licht sensor:  
 LDR sensor, max 120V dc, Omgevingstemperatuur -30 tot 70 °C  
