@@ -57,7 +57,7 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 | Gardena Micro-dip      | Self-watering , Micro-dip systeem          |
 
 ### Diagrammen
-
+![Diagram](/doc/img/Diagram.png)  
 #### Algemene architectuur
 
 #### Gedetailleerde diagrammen
