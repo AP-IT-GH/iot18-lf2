@@ -83,6 +83,7 @@ Waardemeting van de bodemvochtigheid, werking op 3.3V-5V
 SEN-10972 - pH sensor:  
   
 APDS-9301 - Licht sensor:  
+LDR sensor, max 120V dc, Omgevingstemperatuur -30 tot 70 °C  
   
 Raspberry Pi 3:  
 ingebouwde wifimodule, veel pinnen, ...  
