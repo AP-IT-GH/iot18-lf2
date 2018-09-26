@@ -1,7 +1,7 @@
 # Internet of Things - Naam Project
 
 ## Groepsleden
-Naam - Verantwoordelijkheid
+Naam - Verantwoordelijkheid\
 Raymond Mohammad\
 Sam Van Bogaert\
 Inias Somers\
