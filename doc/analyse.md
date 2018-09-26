@@ -86,7 +86,7 @@ Waardemeting van de bodemvochtigheid, werking op 3.3V-5V
   
 SEN-10972 - pH sensor:  
 
-SEN-0204 - Water niveau sensor:
+SEN-0204 - Water niveau sensor:  
 Meting van waterlevel, 12v, zeer nauwkeurige waarden
   
 APDS-9301 - Licht sensor:  
