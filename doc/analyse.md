@@ -47,6 +47,15 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 
 ### Marktonderzoek 
 
+| Smart Object           | Technologieën                              |
+|------------------------|--------------------------------------------|
+| Smart Pot              | Water geven van op afstand, app dashboard  |
+| Planty                 | Water geven van op afstand via internet    |
+| Edyn garden sensor kit | trackt licht, temperatuur, vochtigheid ... |
+| SPOT                   | Self-watering, neemt foto's & time lapses  |
+| Aquaponics system      | gebruikt pompen en hydraulica              |
+| Gardena Micro-dip      | Self-watering                              |
+
 ### Diagrammen
 
 #### Algemene architectuur
