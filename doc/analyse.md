@@ -66,6 +66,10 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 ---  
   
 ![Diagram](/doc/img/diagram2.png)  
+  
+---
+  
+![Diagram](/doc/img/RelationeleDatabaseSchema.png)
 #### Schema's van het product
 
 #### Fysiek design (Optioneel)
