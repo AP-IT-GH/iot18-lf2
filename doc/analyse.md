@@ -86,7 +86,10 @@ DHT22 - Temperatuur & luchtvochtigheid sensor:
 zeer nauwkerige waardemetingen (2-5% afwijking) van temperatuur (-40 to 80°C) en luchtvochtigheid (0-100%)  
   
 SEN-13637 - Bodemvochtigheid sensor:  
-Waardemeting van de bodemvochtigheid, werking op 3.3V-5V  
+Waardemeting van de bodemvochtigheid, werking op 3.3V-5V 
+
+SEN-11050 - Temperatuur sensor (waterproof)
+±0.5°C nauwkeurigheid van -10°C to +85°C , werking 3.3v-5v
   
 SEN-10972 - pH sensor:  
 
