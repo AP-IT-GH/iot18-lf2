@@ -59,6 +59,7 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 ### Diagrammen
 
 #### Algemene architectuur
+![Diagram](/doc/img/Algemene_architectuur.PNG)  
 
 #### Gedetailleerde diagrammen
 ![Diagram](/doc/img/diagram.png)  
