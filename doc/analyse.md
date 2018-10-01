@@ -106,8 +106,8 @@ ingebouwde wifimodule, veel pinnen, ...
 PCB:  
 Compacte elektrische schakeling die zorgt voor voeding, sensor verbinding, ...    
   
-Kunststof water magneetventiel – 12V:    
-Dit ventiel wordt gebruikt om het water tegen te houden of juist te laten stromen (aangestuurd door raspberry Pi)  
+Water Pump 6V - 12V with 1m silicone tube
+6 - 12V DC / 0.5 - 0.7A power supply.
   
 SLV-Transformer 60W 12V:  
 Zet de netspanning om naar 12V  
