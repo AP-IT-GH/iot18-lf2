@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body {
+    font-family: "Helvetica-Neue", Helvetica, Arial, sans-serif;
+    color: #ddd;
+    background-color: #10101a;
+    margin: 0px;
+}
+
+.textbox {
+    background-color: #10101a;
+    border: 1px solid #1a1a20;
+    border-radius: 2px;
+    padding: 8px;
+    margin: 5px 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #ddd;
+}
+
+.button {
+    border: none;
+    padding: 8px 32px;
+    margin: 5px 0px;
+    border-radius: 2px;
+    background-color: #224;
+    cursor: pointer;
+    color: #ddd;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.button:hover {
+    background-color: #335;
+}
