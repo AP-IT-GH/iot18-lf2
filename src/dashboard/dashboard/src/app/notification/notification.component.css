@@ -1,0 +1,16 @@
+.notification {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 222px;
+    padding: 10px;
+}
+
+.notification-severe {
+    background-color: #f33;
+}
+
+.notification-warning {
+    background-color: #f92;
+    color: #222;
+}

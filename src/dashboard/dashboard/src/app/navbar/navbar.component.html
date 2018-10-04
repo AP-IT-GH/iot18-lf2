@@ -1,22 +1,37 @@
 <nav>
-  <a href="#">
+  <a [routerLink]="['/home']">
     <div class="nav-block-left">
       LabFarm 2
     </div>
   </a>
-  <a href="#">
-    <div class="nav-block-right">
-      Onderwerp1
+  <a [routerLink]="['/settings']">
+    <div class="nav-block-right" style="padding-right:24px;">
+      Instellingen
     </div>
   </a>
   <a href="#">
     <div class="nav-block-right">
-      Onderwerp2
+      Licht
     </div>
   </a>
   <a href="#">
     <div class="nav-block-right">
-      Onderwerp3
+      Temperatuur
+    </div>
+  </a>
+  <a href="#">
+    <div class="nav-block-right">
+      pH-waarde
+    </div>
+  </a>
+  <a href="#">
+    <div class="nav-block-right">
+      Vochtigheid
+    </div>
+  </a>
+  <a href="#">
+    <div class="nav-block-right">
+      Beeldherkenning
     </div>
   </a>
 </nav>

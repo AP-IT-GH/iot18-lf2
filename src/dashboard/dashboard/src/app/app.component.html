@@ -1,5 +1,16 @@
+<head>
+    <link rel="stylesheet" href="assets/switchery.css" />
+    <script src="assets/switchery.js"></script>
+
+    <script>
+        var elem = document.querySelector('.js-switch');
+        var init = new Switchery(elem);
+    </script>
+</head>
+
 <!--The content below is only a placeholder and can be replaced.-->
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <router-outlet></router-outlet>
 
+<app-notification></app-notification>
