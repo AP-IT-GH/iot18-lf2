@@ -1,0 +1,28 @@
+nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    border-bottom: 1px solid #223;
+    background-color: #15151b;
+    overflow: hidden;
+}
+
+a {
+    color: #ddd;
+}
+
+.nav-block-left {
+    float: left;
+    padding: 12px;
+}
+
+.nav-block-right {
+    float: right;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.nav-block-right:hover {
+    background-color: #25252b;
+}

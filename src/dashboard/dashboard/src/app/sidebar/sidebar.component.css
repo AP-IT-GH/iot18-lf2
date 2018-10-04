@@ -1,0 +1,14 @@
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding-top: 43px;
+    height: 100%;
+}
+
+.sidebar-inner {
+    border-right: 1px solid #223;
+    margin: 12px 0px;
+    padding: 12px;
+    padding-right: 32px;
+}

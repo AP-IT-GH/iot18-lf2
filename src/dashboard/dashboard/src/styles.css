@@ -8,6 +8,11 @@ body {
     margin: 0px;
 }
 
+.content {
+    margin-top: 83px;
+    margin-left: 275px;
+}
+
 .textbox {
     background-color: #10101a;
     border: 1px solid #1a1a20;
