@@ -81,7 +81,9 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 
 ## Release Plan 
 
-## Inventarisatie Hardware  
+## Inventarisatie Hardware 
+
+MCP3008 - Raspberry Pi Analog to Digital converter  
 
 DHT22 - Temperatuur & luchtvochtigheid sensor:  
 zeer nauwkerige waardemetingen (2-5% afwijking) van temperatuur (-40 to 80°C) en luchtvochtigheid (0-100%)  
