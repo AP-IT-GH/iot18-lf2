@@ -20,8 +20,9 @@ a:hover {
 .nav-block-left {
     float: left;
     padding: 12px;
-    padding-left: 24px;
+    padding-left: 20px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .nav-block-right {

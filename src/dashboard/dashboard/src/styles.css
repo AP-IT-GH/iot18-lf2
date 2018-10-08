@@ -25,9 +25,15 @@ a:hover {
     color: #fff;
 }
 
+hr {
+    border-bottom: none;
+    border-top: 1px solid #223;
+}
+
 .content {
     margin-top: 83px;
     margin-left: 275px;
+    margin-right: 42px;
 }
 
 .textbox {
@@ -36,7 +42,7 @@ a:hover {
     border-radius: 2px;
     padding: 8px;
     margin: 5px 0px;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
     color: #ddd;
 }
 

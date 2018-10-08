@@ -23,9 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/switchery.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/switchery.js"
+            ]
           },
           "configurations": {
             "production": {
