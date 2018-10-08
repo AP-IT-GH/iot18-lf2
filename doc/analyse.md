@@ -91,7 +91,7 @@ zeer nauwkerige waardemetingen (2-5% afwijking) van temperatuur (-40 to 80°C) e
 SEN-13637 - Bodemvochtigheid sensor:  
 Waardemeting van de bodemvochtigheid, werking op 3.3V-5V 
 
-SEN-11050 - Temperatuur sensor (waterproof)
+SEN-11050 (DS18B20) - Temperatuur sensor (waterproof)
 ±0.5°C nauwkeurigheid van -10°C to +85°C , werking 3.3v-5v
   
 SEN-10972 - pH sensor:  
