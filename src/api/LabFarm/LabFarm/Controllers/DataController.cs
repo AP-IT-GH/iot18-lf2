@@ -8,9 +8,10 @@ namespace LabFarm.Controllers
 {
     public class DataController : Controller
     {
-        public IActionResult Index()
+        [Route("api/[controller]")]
+        public int Index()
         {
-            return View();
+            return 5;
         }
     }
 }
