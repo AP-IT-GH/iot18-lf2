@@ -30,11 +30,41 @@ hr {
     border-top: 1px solid #223;
 }
 
+.content-box {
+    overflow: hidden;
+    border: 1px solid #112;
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 15px #001;
+    background-color: #15151b;
+    padding: 12px;
+}
+
+.progressbar {
+    border: 1px solid #223;
+    border-radius: 6px;
+    height: 18px;
+    background-color: #10101a;
+    text-align: center;
+    margin: 6px 0px;
+}
+
+.progressbar-fill {
+    background-color: #f92;
+    height: auto;
+    border-radius: 6px;
+    color: #000;
+}
+
 .content {
     margin-top: 83px;
     margin-left: 275px;
     margin-right: 42px;
 }
+
+.col-3 { width: 25%; display: inline-block;}
+.col-4 { width: 33%; display: inline-block; }
+.col-6 { width: 50%; display: inline-block; }
+.col-inner { padding: 8px; }
 
 .textbox {
     background-color: #10101a;

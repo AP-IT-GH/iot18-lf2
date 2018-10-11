@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ImageryComponent } from './imagery/imagery.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SettingsComponent } from './settings/settings.component';
     NavbarComponent,
     SidebarComponent,
     NotificationComponent,
-    SettingsComponent
+    SettingsComponent,
+    ImageryComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { SettingsComponent } from './settings/settings.component';
       { path: 'home', component: HomeComponent},
       { path: 'login', component: LoginComponent},
       { path: 'settings', component: SettingsComponent},
+      { path: 'imagery', component: ImageryComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
     ], { useHash: true }),
   ],
