@@ -10,5 +10,7 @@ namespace LabFarm.Models
         public int SensorId { get; set; }
         public string SensorType { get; set; }
         public int Value { get; set; }
+
+        public ICollection<Sensorvalue> Sensorvalues { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LabFarm.Controllers
 {
@@ -12,6 +13,12 @@ namespace LabFarm.Controllers
         public int Index()
         {
             return 5;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllData()
+        {
+            return Ok();
         }
     }
 }

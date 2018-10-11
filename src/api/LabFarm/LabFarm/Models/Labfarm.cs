@@ -9,5 +9,8 @@ namespace LabFarm.Models
     {
         public int LabfarmId { get; set; }
         public string Name { get; set; }
+
+        public ICollection<Sensor> Sensors { get; set; }
+        public ICollection<Plant> Plants { get; set; }
     }
 }
