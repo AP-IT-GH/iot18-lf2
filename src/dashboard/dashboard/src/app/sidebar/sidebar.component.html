@@ -1,5 +1,8 @@
-<div class="sidebar">
+<div class="sidebar" onload="startTime()">
   <div class="sidebar-inner">
+
+    <div id="clock"></div>
+
     <a [routerLink]="['/settings']">
       <div class="sidebar-infoblock">
         Lamp: <b><span style='color:green'>AAN</span></b>

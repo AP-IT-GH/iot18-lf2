@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiSwitchModule } from 'ngx-toggle-switch';
 
 @Component({
   selector: 'app-settings',

@@ -11,6 +11,8 @@ import { NotificationComponent } from './notification/notification.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ImageryComponent } from './imagery/imagery.component';
 
+import { UiSwitchModule } from 'ngx-toggle-switch';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { ImageryComponent } from './imagery/imagery.component';
     ImageryComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, UiSwitchModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent},
       { path: 'login', component: LoginComponent},
