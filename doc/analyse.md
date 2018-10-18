@@ -81,15 +81,17 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 
 ## Release Plan 
 
-## Inventarisatie Hardware  
+## Inventarisatie Hardware 
 
-DHT22 - Temperatuur & luchtvochtigheid sensor:  
+ADS1115 (MCP3008) - Raspberry Pi Analog to Digital converter  
+
+MCP9700 & HCZ D5 - Temperatuur & luchtvochtigheid sensor:  
 zeer nauwkerige waardemetingen (2-5% afwijking) van temperatuur (-40 to 80°C) en luchtvochtigheid (0-100%)  
   
 SEN-13637 - Bodemvochtigheid sensor:  
 Waardemeting van de bodemvochtigheid, werking op 3.3V-5V 
 
-SEN-11050 - Temperatuur sensor (waterproof)
+MCP9700 - Temperatuur sensor (waterproof)
 ±0.5°C nauwkeurigheid van -10°C to +85°C , werking 3.3v-5v
   
 SEN-10972 - pH sensor:  
@@ -97,8 +99,11 @@ SEN-10972 - pH sensor:
 SEN-0204 - Water niveau sensor:  
 Meting van waterlevel, 12v, zeer nauwkeurige waarden
   
-APDS-9301 - Licht sensor:  
+LDR - Licht sensor:  
 LDR sensor, max 120V dc, Omgevingstemperatuur -30 tot 70 °C  
+
+ADS1115 - Analog to digital converter
+16-bit, low power, accurate
   
 Raspberry Pi 3:  
 ingebouwde wifimodule, veel pinnen, ...  
