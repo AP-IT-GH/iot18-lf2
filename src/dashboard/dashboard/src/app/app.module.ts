@@ -12,6 +12,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { ImageryComponent } from './imagery/imagery.component';
 
 import { UiSwitchModule } from 'ngx-toggle-switch';
+import { HumidityComponent } from './humidity/humidity.component';
+import { PhValueComponent } from './ph-value/ph-value.component';
+import { TemperatureComponent } from './temperature/temperature.component';
+import { LightComponent } from './light/light.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { UiSwitchModule } from 'ngx-toggle-switch';
     SidebarComponent,
     NotificationComponent,
     SettingsComponent,
-    ImageryComponent
+    ImageryComponent,
+    HumidityComponent,
+    PhValueComponent,
+    TemperatureComponent,
+    LightComponent
   ],
   imports: [
     BrowserModule, UiSwitchModule,
@@ -31,6 +39,10 @@ import { UiSwitchModule } from 'ngx-toggle-switch';
       { path: 'login', component: LoginComponent},
       { path: 'settings', component: SettingsComponent},
       { path: 'imagery', component: ImageryComponent},
+      { path: 'humidity', component: HumidityComponent},
+      { path: 'ph-value', component: PhValueComponent},
+      { path: 'temperature', component: TemperatureComponent},
+      { path: 'light', component: LightComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
     ], { useHash: true }),
   ],

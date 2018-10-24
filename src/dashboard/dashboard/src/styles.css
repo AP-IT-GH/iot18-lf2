@@ -30,6 +30,25 @@ hr {
     border-top: 1px solid #223;
 }
 
+table {
+    border-collapse: collapse;
+    margin: 10px 0px;
+}
+
+td {
+    border: 1px solid #223;
+    padding: 8px;
+}
+
+th {
+    background-color: #f92;
+    border: 1px solid #f92;
+    color: #222;
+    padding: 12px;
+}
+
+tr:hover { background-color: #1a1a20; }
+
 .content-box {
     overflow: hidden;
     border: 1px solid #112;
@@ -61,9 +80,9 @@ hr {
     margin-right: 42px;
 }
 
-.col-3 { width: 25%; display: inline-block;}
-.col-4 { width: 33%; display: inline-block; }
-.col-6 { width: 50%; display: inline-block; }
+.col-3 { width: 25%; display: inline-block; vertical-align: top;}
+.col-4 { width: 33%; display: inline-block; vertical-align: top; }
+.col-6 { width: 50%; display: inline-block; vertical-align: top; }
 .col-inner { padding: 8px; }
 
 .textbox {
