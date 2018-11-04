@@ -10,12 +10,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ImageryComponent } from './imagery/imagery.component';
+import { ClarifaiService } from './clarifai_service/clarifai.service';
 
 import { UiSwitchModule } from 'ngx-toggle-switch';
 import { HumidityComponent } from './humidity/humidity.component';
 import { PhValueComponent } from './ph-value/ph-value.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { LightComponent } from './light/light.component';
     HumidityComponent,
     PhValueComponent,
     TemperatureComponent,
-    LightComponent
+    LightComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule, UiSwitchModule,
@@ -43,6 +46,7 @@ import { LightComponent } from './light/light.component';
       { path: 'ph-value', component: PhValueComponent},
       { path: 'temperature', component: TemperatureComponent},
       { path: 'light', component: LightComponent},
+      { path: 'test', component: TestComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
     ], { useHash: true }),
   ],
