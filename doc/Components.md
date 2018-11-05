@@ -13,6 +13,7 @@
 * Ph sensor
 * Water pump
 * Water level sensor
+* Lights
                         
                         
                         
