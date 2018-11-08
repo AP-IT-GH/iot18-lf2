@@ -1,14 +1,50 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NotificationComponent } from './notification/notification.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ImageryComponent } from './imagery/imagery.component';
+
+import { UiSwitchModule } from 'ngx-toggle-switch';
+import { HumidityComponent } from './humidity/humidity.component';
+import { PhValueComponent } from './ph-value/ph-value.component';
+import { TemperatureComponent } from './temperature/temperature.component';
+import { LightComponent } from './light/light.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    NavbarComponent,
+    SidebarComponent,
+    NotificationComponent,
+    SettingsComponent,
+    ImageryComponent,
+    HumidityComponent,
+    PhValueComponent,
+    TemperatureComponent,
+    LightComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, UiSwitchModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent},
+      { path: 'login', component: LoginComponent},
+      { path: 'settings', component: SettingsComponent},
+      { path: 'imagery', component: ImageryComponent},
+      { path: 'humidity', component: HumidityComponent},
+      { path: 'ph-value', component: PhValueComponent},
+      { path: 'temperature', component: TemperatureComponent},
+      { path: 'light', component: LightComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+    ], { useHash: true }),
   ],
   providers: [],
   bootstrap: [AppComponent]

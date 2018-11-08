@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    color: #bbb;
+    background-color: #10101a;
+    margin: 0px;
+}
+
+h1 { font-weight: normal; }
+h2 { font-weight: normal; }
+h3 { font-weight: normal; }
+
+a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #bbb;
+}
+
+a:hover {
+    font-weight: normal;
+    text-decoration: none;
+    color: #fff;
+}
+
+hr {
+    border-bottom: none;
+    border-top: 1px solid #223;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 10px 0px;
+}
+
+td {
+    border: 1px solid #223;
+    padding: 8px;
+}
+
+th {
+    background-color: #f92;
+    border: 1px solid #f92;
+    color: #222;
+    padding: 12px;
+}
+
+tr:hover { background-color: #1a1a20; }
+
+.content-box {
+    overflow: hidden;
+    border: 1px solid #112;
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 15px #001;
+    background-color: #15151b;
+    padding: 12px;
+}
+
+.progressbar {
+    border: 1px solid #223;
+    border-radius: 6px;
+    height: 18px;
+    background-color: #10101a;
+    text-align: center;
+    margin: 6px 0px;
+}
+
+.progressbar-fill {
+    background-color: #f92;
+    height: auto;
+    border-radius: 6px;
+    color: #000;
+}
+
+.content {
+    margin-top: 83px;
+    margin-left: 275px;
+    margin-right: 42px;
+}
+
+.col-3 { width: 25%; display: inline-block; vertical-align: top;}
+.col-4 { width: 33.3%; display: inline-block; vertical-align: top; }
+.col-6 { width: 50%; display: inline-block; vertical-align: top; }
+.col-inner { padding: 8px; }
+.col-hover:hover {
+    background-color: #1a1a24;
+    cursor: pointer;
+}
+
+.center-content { text-align:center; }
+
+.textbox {
+    background-color: #10101a;
+    border: 1px solid #1a1a20;
+    border-radius: 2px;
+    padding: 8px;
+    margin: 5px 0px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    color: #ddd;
+}
+
+.button {
+    border: none;
+    padding: 8px 32px;
+    margin: 5px 0px;
+    border-radius: 2px;
+    background-color: #f92;
+    cursor: pointer;
+    color: #222;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.button:hover {
+    background-color: #fb4;
+}
+
+.switch-element {
+    position: relative;
+    bottom: 5px;
+    left: 12px;
+}

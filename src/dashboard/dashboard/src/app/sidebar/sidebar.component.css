@@ -1,0 +1,30 @@
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding-top: 43px;
+    height: 100%;
+}
+
+.sidebar-inner {
+    border-right: 1px solid #223;
+    margin: 12px 0px;
+}
+
+.sidebar-infoblock {
+    padding: 8px 20px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.sidebar-infoblock:hover {
+    background-color: #223;
+}
+
+.infoblock-warning {
+    color: rgb(255, 119, 7);
+}
+
+.infoblock-severe {
+    color: rgb(247, 30, 30);
+}

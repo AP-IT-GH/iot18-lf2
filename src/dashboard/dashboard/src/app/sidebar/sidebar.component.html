@@ -1,0 +1,43 @@
+<div class="sidebar" onload="startTime()">
+  <div class="sidebar-inner">
+
+    <div id="clock"></div>
+
+    <a [routerLink]="['/settings']">
+      <div class="sidebar-infoblock">
+        Lamp: <b><span style='color:green'>AAN</span></b>
+      </div>
+    </a>
+    <a [routerLink]="['/temperature']">
+      <div class="sidebar-infoblock">
+        Temperatuur: <b>21.2°c</b>
+      </div>
+    </a>
+    <a [routerLink]="['/humidity']">
+      <div class="sidebar-infoblock">
+        Luchtvochtigheid: <b>41%</b>
+      </div>
+    </a>
+    <a [routerLink]="['/humidity']">
+      <div class="sidebar-infoblock">
+        Bodemvochtigheid: <b>88%</b>
+      </div>
+    </a>
+    <a [routerLink]="['/light']">
+      <div class="sidebar-infoblock">
+        Licht: <b>446 Lumen</b>
+      </div>
+    </a>
+    <a [routerLink]="['/ph-value']">
+      <div class="sidebar-infoblock">
+        pH-waarde: <b>7.3</b>
+      </div>
+    </a>
+    <a [routerLink]="['/settings']">
+      <div class="sidebar-infoblock">
+        Water: <b>92%</b>
+      </div>
+    </a>
+
+  </div>
+</div>
