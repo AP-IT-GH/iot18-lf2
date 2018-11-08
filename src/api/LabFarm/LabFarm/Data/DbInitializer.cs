@@ -30,7 +30,8 @@ namespace LabFarm.Data
             context.SaveChanges();
 
             context.Sensors.AddRange(
-                new Sensor { SensorType = "Humidity", Value = 5, LabfarmId = 1}
+                new Sensor { SensorType = "Humidity", Value = 5, LabfarmId = 1},
+                new Sensor { SensorType = "Temperature", Value = 7, LabfarmId = 1 }
             );
 
             context.SaveChanges();
@@ -40,7 +41,12 @@ namespace LabFarm.Data
                 new Sensorvalue { Timestamp = new DateTime(2018, 10, 12, 15, 51, 0), Value = 250, SensorId = 1, PlantId = 1 },
                 new Sensorvalue { Timestamp = new DateTime(2018, 10, 13, 15, 51, 0), Value = 240, SensorId = 1, PlantId = 1 },
                 new Sensorvalue { Timestamp = new DateTime(2018, 10, 15, 15, 51, 0), Value = 250, SensorId = 1, PlantId = 1 },
-                new Sensorvalue { Timestamp = new DateTime(2018, 10, 16, 15, 51, 0), Value = 260, SensorId = 1, PlantId = 1 }
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 16, 15, 51, 0), Value = 260, SensorId = 1, PlantId = 1 },
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 11, 15, 51, 0), Value = 250, SensorId = 2, PlantId = 1 },
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 12, 15, 51, 0), Value = 250, SensorId = 2, PlantId = 1 },
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 13, 15, 51, 0), Value = 240, SensorId = 2, PlantId = 1 },
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 15, 15, 51, 0), Value = 250, SensorId = 2, PlantId = 1 },
+                new Sensorvalue { Timestamp = new DateTime(2018, 10, 16, 15, 51, 0), Value = 260, SensorId = 2, PlantId = 1 }
             );
 
             context.SaveChanges();
