@@ -1,0 +1,22 @@
+.loginbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -82px 0px 0px -172px;
+    width: 320px;
+    height: 140px;
+    border: 1px solid #223;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #15151b;
+    padding: 12px;
+}
+
+footer {
+    position: absolute;
+    bottom: 12px;
+    font-size: 9px;
+    color: #778;
+    width: 100%;
+    text-align: center;
+}
