@@ -10,6 +10,9 @@ namespace LabFarm.Models
         public int PlantId { get; set; }
         public string Name { get; set; }
         public string Condition { get; set; }
+        public int LabfarmId { get; set; }
         public DateTime SeedTime { get; set; }
+
+        public Labfarm Labfarm { get; set; }
     }
 }

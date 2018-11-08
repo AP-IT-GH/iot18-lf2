@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using LabFarm.Data;
+using MQTTnet.AspNetCore;
 
 namespace LabFarm
 {
@@ -28,6 +29,14 @@ namespace LabFarm
             services.AddMvc();
 
             services.AddDbContext<LabContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddHostedMqttServer(builder => builder.WithDefaultEndpointPort(1883));
+
+            //this adds tcp server support based on System.Net.Socket
+            services.AddMqttTcpServerAdapter();
+
+            //this adds websocket support
+            services.AddMqttWebSocketServerAdapter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +48,8 @@ namespace LabFarm
             }
 
             app.UseMvc();
+
+            app.UseMqttEndpoint();
 
             DbInitializer.Initialize(labContext);
         }
