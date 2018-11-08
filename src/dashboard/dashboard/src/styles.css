@@ -81,9 +81,15 @@ tr:hover { background-color: #1a1a20; }
 }
 
 .col-3 { width: 25%; display: inline-block; vertical-align: top;}
-.col-4 { width: 33%; display: inline-block; vertical-align: top; }
+.col-4 { width: 33.3%; display: inline-block; vertical-align: top; }
 .col-6 { width: 50%; display: inline-block; vertical-align: top; }
 .col-inner { padding: 8px; }
+.col-hover:hover {
+    background-color: #1a1a24;
+    cursor: pointer;
+}
+
+.center-content { text-align:center; }
 
 .textbox {
     background-color: #10101a;
