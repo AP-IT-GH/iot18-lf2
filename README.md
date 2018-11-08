@@ -5,7 +5,7 @@ Naam - Verantwoordelijkheid\
 Raymond Mohammad\
 Sam Van Bogaert\
 Inias Somers\
-Melvin Bootsgezel\
+Gillian Sterckx\
 Seppe De Beule\
 Kevin Van de Vyver
 ## Documentatie
