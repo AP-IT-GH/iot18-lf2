@@ -1,13 +1,13 @@
 import { Plant } from './plant';
 
-export class Labfarm {
+export class Sensorvalue {
     constructor() {
 
     }
 
     sensorvalueId: number;
     value: number;
-    timestamp: DateTimeFormat;
+    timestamp: number;
     plnatId: number;
 
     plant: Plant;

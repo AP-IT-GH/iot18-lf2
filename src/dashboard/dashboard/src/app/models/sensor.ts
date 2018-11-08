@@ -1,6 +1,6 @@
 import { Sensorvalue } from './sensorvalue';
 
-export class Labfarm {
+export class Sensor {
     constructor() {
 
     }

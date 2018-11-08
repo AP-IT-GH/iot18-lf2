@@ -6,5 +6,5 @@ export class Plant {
     plantId: number;
     name: string;
     condition: string;
-    seedTime: DateTimeFormat;
+    seedTime: number;
 }

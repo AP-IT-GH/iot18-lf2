@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-//import { Observable } from "rxjs/Observable";
-import * as Clarifai from 'clarifai';
+//import * as Clarifai from 'clarifai';
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -10,8 +9,8 @@ import { Observable } from "rxjs";
 
 export class ClarifaiService {
   constructor(private _http: HttpClient) { };
-  
-  getImageColorValues(imageUrl:string): RootObject {
+
+  /*public getColorValues(imageUrl:string): RootObject {
     const app = new Clarifai.App({
       ApiKey: "700aba9a33a94a48bcb5b88f53a414cc"
     });
@@ -24,6 +23,7 @@ export class ClarifaiService {
     while(obj = null){}
     return obj;
   }
+  */
   ngOnInit() { 
   }
 }
