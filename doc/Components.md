@@ -3,17 +3,16 @@
 * Lichtsensor                 --->        LDR
 * Luchtvochtigheidssensor     --->        HCZ D5
 * Bodemvochtigheidssensor     --->        Mh-Sensor-Series Flying fish
-* Analog digital converter     --->       ADS1115
-* 2x Stappenmotor             --->        Wantai Nema 17
-* 2x Stappenmoter driver      --->        Easydriver
-
+* Analog digital converter    --->        ADS1115
+* 1x Stappenmotor             --->        Wantai Nema 17
+* 1x Stappenmoter driver      --->        Easydriver
+* Ph sensor                   --->        SEN0161 
+* Water level sensor          --->        Robotdyn  
 
 ## Overview unknown components 
 * Backup battery 
-* Ph sensor
-* Water pump
-* Water level sensor
-* Lights
+* Water pump (besteld)
+* Lights ( Zijn beschikbaar)
                         
                         
                         
