@@ -30,8 +30,11 @@ namespace LabFarm.Data
             context.SaveChanges();
 
             context.Sensors.AddRange(
-                new Sensor { SensorType = "Humidity", Value = 5, LabfarmId = 1},
-                new Sensor { SensorType = "Temperature", Value = 7, LabfarmId = 1 }
+                new Sensor { SensorType = "HumidityAir", Value = 5, LabfarmId = 1},
+                new Sensor { SensorType = "HumidityGround", Value = 5, LabfarmId = 1 },
+                new Sensor { SensorType = "Temperature", Value = 7, LabfarmId = 1 },
+                new Sensor { SensorType = "Light", Value = 7, LabfarmId = 1 },
+                new Sensor { SensorType = "Ph", Value = 7, LabfarmId = 1 }
             );
 
             context.SaveChanges();

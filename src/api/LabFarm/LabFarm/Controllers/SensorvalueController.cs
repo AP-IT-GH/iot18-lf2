@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LabFarm.Data;
 using LabFarm.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace LabFarm.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [EnableCors("CorsPolicy")]
+    [Route("api/data")]
     public class SensorvalueController : Controller
     {
         private readonly LabContext _context;
@@ -28,8 +30,20 @@ namespace LabFarm.Controllers
             return _context.Sensorvalues;
         }
 
+        [HttpGet("{type}")]
+        public async Task<IActionResult> GetSensorvaluesByType([FromRoute] string type)
+        {
+            var sensor = await _context.Sensors.Include(s => s.Sensorvalues).SingleOrDefaultAsync(s => s.SensorType.Equals(type));
+            if (sensor == null)
+            {
+                return NotFound();
+            }
+
+            return new OkObjectResult(sensor);
+        }
+
         // GET: api/Sensorvalue/5
-        [HttpGet("{id}")]
+        [HttpGet("{type}/{id}")]
         public async Task<IActionResult> GetSensorvalue([FromRoute] int id)
         {
             if (!ModelState.IsValid)
