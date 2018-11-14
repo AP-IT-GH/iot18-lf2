@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LabFarm.Data;
 using LabFarm.Models;
 using Microsoft.AspNetCore.Cors;
+using System.Dynamic;
 
 namespace LabFarm.Controllers
 {
@@ -23,11 +24,20 @@ namespace LabFarm.Controllers
             _context = context;
         }
 
-        // GET: api/Sensorvalue
+        // GET: api/data
         [HttpGet]
-        public IEnumerable<Sensorvalue> GetSensorvalues()
+        public async Task<IActionResult> GetSensorvaluesOverview()
         {
-            return _context.Sensorvalues;
+            dynamic data = new ExpandoObject();
+            data.Lamp = false;
+            data.Temperature = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Temperature")).LastAsync();
+            data.HumidityAir = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityAir")).LastAsync();
+            data.HumidityGround = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityGround")).LastAsync();
+            data.Light = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Light")).LastAsync();
+            data.Ph = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Ph")).LastAsync();
+            data.Water = 26;
+
+            return new OkObjectResult(data);
         }
 
         [HttpGet("{type}")]
