@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+import { Sensorvalue } from '../models/sensorvalue';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-light',
@@ -8,37 +10,61 @@ import { Chart } from 'chart.js'
 })
 export class LightComponent implements OnInit {
 
-  LineChart=[];
-  constructor() { }
+  LineChart = [];
+  light: Sensorvalue[] = [];
+  lightValue: number[] = [];
+  lightLabel: string[] = [];
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.getLight();
+  }
+
+  getLight() {
+    let type = "light";
+    this.api.getSensor(type)
+      .subscribe(res => {
+        this.light = res.sensorvalues;
+        if (this.lightValue.length >= 24) {
+          this.light.forEach((p, i) => this.lightValue[i] = p.value);
+          this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightValue[i] = p.value);
+          this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
+          this.light.forEach((p, i) => this.lightValue[i] = p.value);
+          this.light.forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.AddChart();
+      })
+  }
+
+  AddChart() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',
       data: {
-          labels: ["16u","17u","18u","19u","20u","21u","22u","23u","00u","01u","02u","03u","04u","05u","06u","07u","08u","09u","10u","11u","12u","13u","14u","15u"],
-          datasets: [{
-             label: 'Verlichting (Lumen)',
-             data: [243,238,239,61,54,42,43,42,42,41,42,42,42,42,42,260,241,245,201,213,224,231,216,251], 
-             fill: false,
-             lineTension: 0.2,
-             borderColor: "#f92",
-             borderWidth: 1.5
-          }]
+        labels: this.lightLabel,
+        datasets: [{
+          label: 'Licht (lumen)',
+          data: this.lightValue,
+          fill: false,
+          lineTension: 0.2,
+          borderColor: "#f92",
+          borderWidth: 1.5
+        }]
       },
       options: {
-         title: {
-            text: "Line Chart",
-            display: false
-         }
+        title: {
+          text: "Line Chart",
+          display: false
+        }
       },
       scales: {
         yAxes: [{
-           ticks:{
-              beginAtZero:true
-           }
+          ticks: {
+            beginAtZero: true
+          }
         }]
-       }
-   })
+      }
+    })
   }
 
 }

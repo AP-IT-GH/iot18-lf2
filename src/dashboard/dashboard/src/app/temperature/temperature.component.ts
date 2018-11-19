@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+import { Sensorvalue } from '../models/sensorvalue';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-temperature',
@@ -7,38 +9,63 @@ import { Chart } from 'chart.js'
   styleUrls: ['./temperature.component.css']
 })
 export class TemperatureComponent implements OnInit {
-  
-  LineChart=[];
-  constructor() { }
+
+  LineChart = [];
+  temperature: Sensorvalue[] = [];
+  temperatureValue: number[] = [];
+  temperatureLabel: string[] = [];
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.getTemperature();
+
+  }
+
+  getTemperature() {
+    let type = "temperature";
+    this.api.getSensor(type)
+      .subscribe(res => {
+        this.temperature = res.sensorvalues;
+        if (this.temperatureValue.length >= 24) {
+          this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
+          this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureValue[i] = p.value);
+          this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
+          this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
+          this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.AddChart();
+      })
+  }
+
+  AddChart() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',
       data: {
-          labels: ["16u","17u","18u","19u","20u","21u","22u","23u","00u","01u","02u","03u","04u","05u","06u","07u","08u","09u","10u","11u","12u","13u","14u","15u"],
-          datasets: [{
-             label: 'Temperatuur (°c)',
-             data: [21.2,21.3,21.3,21.0,20.8,20.7,20.5,20.2,19.9,19.6,19.3,19.1,19.0,18.9,18.8,18.8,18.7,19.2,19.9,20.6,20.9,21.0,21.0,20.9], 
-             fill: false,
-             lineTension: 0.2,
-             borderColor: "#f92",
-             borderWidth: 1.5
-          }]
+        labels: this.temperatureLabel,
+        datasets: [{
+          label: 'Temperatuur (°c)',
+          data: this.temperatureValue,
+          fill: false,
+          lineTension: 0.2,
+          borderColor: "#f92",
+          borderWidth: 1.5
+        }]
       },
       options: {
-         title: {
-            text: "Line Chart",
-            display: false
-         }
+        title: {
+          text: "Line Chart",
+          display: false
+        }
       },
       scales: {
         yAxes: [{
-           ticks:{
-              beginAtZero:true
-           }
+          ticks: {
+            beginAtZero: true
+          }
         }]
-       }
-   })
+      }
+    })
   }
 
 }

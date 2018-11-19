@@ -12,11 +12,12 @@ namespace LabFarm.Models
         public int SensorvalueId { get; set; }
         public int Value { get; set; }
         public DateTime Timestamp { get; set; }
-        public int? SensorId { get; set; }
+        public int SensorId { get; set; }
         public int? PlantId { get; set; }
 
         [JsonIgnore]
         public Plant Plant { get; set; }
+        [JsonIgnore]
         public Sensor Sensor { get; set; }
     }
 }
