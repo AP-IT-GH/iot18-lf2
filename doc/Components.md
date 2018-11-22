@@ -8,7 +8,7 @@
 * 1x Stappenmotor             --->        Wantai Nema 17
 * 1x Stappenmoter driver      --->        Easydriver
 * Ph sensor                   --->        SEN0161 
-* Water level sensor          --->        Robotdyn  
+* Water level sensor          --->        Eigen PCB  
 
 ## Overview unknown components 
 * Backup battery 
