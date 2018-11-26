@@ -1,4 +1,4 @@
-# Internet of Things - Naam Project
+# Internet of Things - LF2
 
 ## Groepsleden
 Naam - Verantwoordelijkheid\
