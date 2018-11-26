@@ -20,6 +20,8 @@ import { PhValueComponent } from './ph-value/ph-value.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
 import { TestComponent } from './test/test.component';
+import { MqttService } from './services/mqtt.service';
+import { MqttComponent } from './mqtt/mqtt.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { TestComponent } from './test/test.component';
     HumidityComponent,
     PhValueComponent,
     TemperatureComponent,
-    LightComponent
+    LightComponent,
+    MqttComponent
   ],
   imports: [
     HttpModule,
@@ -51,7 +54,7 @@ import { TestComponent } from './test/test.component';
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ], { useHash: true }),
   ],
-  providers: [ApiService],
+  providers: [ApiService, MqttService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
