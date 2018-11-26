@@ -1,0 +1,4 @@
+https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115
+
+https://www.mschoeffler.de/2017/11/27/arduino-tutorial-ir-distance-line-tracing-line-tracking-sensor-mh-sensor-series-ky-033-tcrt5000/
+

@@ -1,0 +1,6 @@
+ph calibration
+
+
+3M KCL: 1700-1800
+water (pH 7?): 2300 - 2400
+sparkling water (ph 5.2): 1600-1700 
