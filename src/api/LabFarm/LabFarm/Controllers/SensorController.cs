@@ -30,7 +30,7 @@ namespace LabFarm.Controllers
         [HttpGet("data")]
         public IActionResult GetSensorData()
         {
-            var data = context.Labfarms.Include(t => t.Sensors).ThenInclude(t => t.Sensorvalues).ToList();
+            var data = context.Labfarms.Include( t => t.Plants).Include(t => t.Sensors).ThenInclude(t => t.Sensorvalues).ToList();
 
             return new OkObjectResult(data);
         }

@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LabFarm.Data;
 using LabFarm.Models;
+using Microsoft.AspNetCore.Cors;
+using System.Dynamic;
 
 namespace LabFarm.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Sensorvalue")]
+    [EnableCors("CorsPolicy")]
+    [Route("api/data")]
     public class SensorvalueController : Controller
     {
         private readonly LabContext _context;
@@ -21,15 +24,36 @@ namespace LabFarm.Controllers
             _context = context;
         }
 
-        // GET: api/Sensorvalue
+        // GET: api/data
         [HttpGet]
-        public IEnumerable<Sensorvalue> GetSensorvalues()
+        public async Task<IActionResult> GetSensorvaluesOverview()
         {
-            return _context.Sensorvalues;
+            dynamic data = new ExpandoObject();
+            data.Lamp = false;
+            data.Temperature = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Temperature")).LastAsync();
+            data.HumidityAir = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityAir")).LastAsync();
+            data.HumidityGround = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityGround")).LastAsync();
+            data.Light = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Light")).LastAsync();
+            data.Ph = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Ph")).LastAsync();
+            data.Water = 26;
+
+            return new OkObjectResult(data);
+        }
+
+        [HttpGet("{type}")]
+        public async Task<IActionResult> GetSensorvaluesByType([FromRoute] string type)
+        {
+            var sensor = await _context.Sensors.Include(s => s.Sensorvalues).SingleOrDefaultAsync(s => s.SensorType.Equals(type));
+            if (sensor == null)
+            {
+                return NotFound();
+            }
+
+            return new OkObjectResult(sensor);
         }
 
         // GET: api/Sensorvalue/5
-        [HttpGet("{id}")]
+        [HttpGet("{type}/{id}")]
         public async Task<IActionResult> GetSensorvalue([FromRoute] int id)
         {
             if (!ModelState.IsValid)

@@ -37,6 +37,15 @@ namespace LabFarm
 
             //this adds websocket support
             services.AddMqttWebSocketServerAdapter();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +59,8 @@ namespace LabFarm
             app.UseMvc();
 
             app.UseMqttEndpoint();
+
+            app.UseCors("CorsPolicy");
 
             DbInitializer.Initialize(labContext);
         }

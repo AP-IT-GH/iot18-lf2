@@ -11,7 +11,7 @@ using LabFarm.Models;
 namespace LabFarm.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Labfarm")]
+    [Route("api/[controller]")]
     public class LabfarmController : Controller
     {
         private readonly LabContext _context;
