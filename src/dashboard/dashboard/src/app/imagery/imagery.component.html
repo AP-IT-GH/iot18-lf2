@@ -12,17 +12,17 @@
     </div>
     <div class="col-4">
       <div class="col-inner">
-        Groei:
-        <div class="progressbar" *ngIf="Growth">
-          <div class="progressbar-fill" [ngStyle]="{'width': MinGrowth}">{{Growth}}%</div>
+        Groen-percentage:
+        <div class="progressbar" *ngIf="MinGreenPercentage">
+          <div class="progressbar-fill" [ngStyle]="{'width': MinGreenPercentage}">{{GreenPercentage}}%</div>
         </div>
       </div>
     </div>
     <div class="col-4">
       <div class="col-inner">
-        Groen-percentage:
-        <div class="progressbar" *ngIf="MinGreenPercentage">
-          <div class="progressbar-fill" [ngStyle]="{'width': MinGreenPercentage}">{{GreenPercentage}}%</div>
+        Groei:
+        <div class="progressbar" *ngIf="Growth">
+          <div class="progressbar-fill" [ngStyle]="{'width': MinGrowth}">{{Growth}}%</div>
         </div>
       </div>
     </div>
