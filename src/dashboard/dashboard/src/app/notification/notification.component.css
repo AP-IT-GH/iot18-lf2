@@ -2,17 +2,20 @@
     position: fixed;
     bottom: 0px;
     left: 0px;
-    width: 209px;
+    width: 217px;
     padding: 10px;
 }
 
 .notification-severe {
     background-color: #f33;
+    color: #000;
+    cursor: pointer;
 }
 
 .notification-warning {
     background-color: #f92;
     color: #222;
+    cursor: pointer;
 }
 
 .notification-stable {

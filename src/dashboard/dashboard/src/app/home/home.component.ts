@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     this.api.getOverview()
       .subscribe(res => {
         this.overview = res;
-        console.log(res);
+        //console.log(res);
       })
   }
 

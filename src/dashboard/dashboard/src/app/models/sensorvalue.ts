@@ -5,10 +5,10 @@ export class Sensorvalue {
 
     }
 
+    Temperature: number;
     sensorvalueId: number;
     value: number;
     timestamp: number;
-    plnatId: number;
-
+    plantId: number;
     plant: Plant;
 }
