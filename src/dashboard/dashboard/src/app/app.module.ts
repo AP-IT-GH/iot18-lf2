@@ -22,6 +22,8 @@ import { LightComponent } from './light/light.component';
 import { TestComponent } from './test/test.component';
 import { MqttService } from './services/mqtt.service';
 import { MqttComponent } from './mqtt/mqtt.component';
+import { MqttDashboardComponent } from './mqtt-dashboard/mqtt-dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,11 @@ import { MqttComponent } from './mqtt/mqtt.component';
     PhValueComponent,
     TemperatureComponent,
     LightComponent,
-    MqttComponent
+    MqttComponent,
+    MqttDashboardComponent
   ],
   imports: [
-    HttpModule,
+    HttpModule, FormsModule,
     BrowserModule, UiSwitchModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
@@ -51,6 +54,7 @@ import { MqttComponent } from './mqtt/mqtt.component';
       { path: 'ph-value', component: PhValueComponent },
       { path: 'temperature', component: TemperatureComponent },
       { path: 'light', component: LightComponent },
+      { path: 'mqtt', component: MqttComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ], { useHash: true }),
   ],

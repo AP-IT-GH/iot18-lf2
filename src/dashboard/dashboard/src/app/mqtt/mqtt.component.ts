@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Connection } from './connection';
 import { MqttService } from '../services/mqtt.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mqtt',
@@ -8,16 +9,15 @@ import { MqttService } from '../services/mqtt.service';
   styleUrls: ['./mqtt.component.css']
 })
 export class MqttComponent implements OnInit {
-  server = "test.mosquitto.org";
-  port = 1883;
+  host = "broker.mqttdashboard.com";
+  port = 8000;
   topic = "testtopic/labfarm";
 
   connection: Connection;
   public loading: boolean = false;
-  public shouldShowDemoHelp: boolean = false;
 
   constructor(private mqttService: MqttService) {
-    this.connection = new Connection(this.server, this.port, this.topic);
+    this.connection = new Connection(this.host, this.port, this.topic);
   }
 
   ngOnInit() {
@@ -26,6 +26,8 @@ export class MqttComponent implements OnInit {
 
   connect() {
     this.loading = true;
+    this.connection = new Connection(this.host, this.port, this.topic)
+    console.log(this.connection)
     this.mqttService.connect(this.connection)
       .then(() => {
         this.loading = false;
@@ -34,16 +36,11 @@ export class MqttComponent implements OnInit {
         this.loading = false;
       });
 
-    this.connection = new Connection(this.connection.host, this.connection.port, "");
+    //this.connection = new Connection(this.data[0], this.data[1], this.data[2]);
   }
 
-  showDemoHelp() {
-    this.shouldShowDemoHelp = !this.shouldShowDemoHelp;
+  fillIn() {
+    this.connection = new Connection(this.host, this.port, this.topic);
   }
-
-  fillInExample1() {
-    this.connection = new Connection(this.server, this.port, this.topic);
-  }
-
 
 }

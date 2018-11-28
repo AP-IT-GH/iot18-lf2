@@ -31,6 +31,7 @@ export class MqttService extends BaseService {
       };
 
       socket.onopen = () => {
+        console.log('Success')
         num = this.connectionInstances.push(new ConnectionInstance(connection, socket));
         resolve();
       };
