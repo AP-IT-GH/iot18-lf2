@@ -12,6 +12,10 @@ export class TestComponent implements OnInit {
   constructor(private _svc:ClarifaiService) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     //this._svc.getColorValues("https://us-east-1.tchyn.io/snopes-production/uploads/2017/06/Dieffenbachia_amoena_poison_fb.jpg");
+=======
+    
+>>>>>>> Dashboard_Clarifai
   }
 }

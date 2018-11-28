@@ -45,7 +45,11 @@
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
 import 'core-js/es7/reflect';
 
-
+// Add global to window, assigning the value of window itself. 
+(window as any).global = window;
+(window as any).process = {
+    env: { DEBUG: undefined },
+  };
 /**
  * Web Animations `@angular/platform-browser/animations`
  * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.

@@ -20,6 +20,11 @@ import { PhValueComponent } from './ph-value/ph-value.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
 import { TestComponent } from './test/test.component';
+<<<<<<< HEAD
+=======
+
+import { ClarifaiService } from './clarifai_service/clarifai.service';
+>>>>>>> Dashboard_Clarifai
 
 @NgModule({
   declarations: [
@@ -34,12 +39,14 @@ import { TestComponent } from './test/test.component';
     HumidityComponent,
     PhValueComponent,
     TemperatureComponent,
-    LightComponent
+    LightComponent,
+    TestComponent
   ],
   imports: [
     HttpModule,
     BrowserModule, UiSwitchModule,
     RouterModule.forRoot([
+<<<<<<< HEAD
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'settings', component: SettingsComponent },
@@ -52,6 +59,23 @@ import { TestComponent } from './test/test.component';
     ], { useHash: true }),
   ],
   providers: [ApiService],
+=======
+      { path: 'home', component: HomeComponent},
+      { path: 'login', component: LoginComponent},
+      { path: 'settings', component: SettingsComponent},
+      { path: 'imagery', component: ImageryComponent},
+      { path: 'humidity', component: HumidityComponent},
+      { path: 'ph-value', component: PhValueComponent},
+      { path: 'temperature', component: TemperatureComponent},
+      { path: 'light', component: LightComponent},
+      { path: 'test', component: TestComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+    ], { useHash: true }),
+  ],
+  providers: [
+    ClarifaiService
+  ],
+>>>>>>> Dashboard_Clarifai
   bootstrap: [AppComponent]
 })
 export class AppModule { }
