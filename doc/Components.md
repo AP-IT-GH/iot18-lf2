@@ -9,11 +9,12 @@
 * 1x Stappenmoter driver      --->        Easydriver
 * Ph sensor                   --->        SEN0161 
 * Water level sensor          --->        Eigen PCB  
+* Water pump                  --->        SHURflo 1000 
+* Lights                      --->        adafruit RGB ledstrip
 
 ## Overview unknown components 
 * Backup battery 
-* Water pump (besteld)
-* Lights ( Zijn beschikbaar)
+
                         
                         
                         
