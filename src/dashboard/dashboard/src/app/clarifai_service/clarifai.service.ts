@@ -1,35 +1,9 @@
 import { Injectable } from "@angular/core";
-<<<<<<< HEAD
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-//import * as Clarifai from 'clarifai';
-import { Observable } from "rxjs";
-=======
 import * as Clarifai from 'clarifai';
->>>>>>> Dashboard_Clarifai
 
 @Injectable()
 
 export class ClarifaiService {
-<<<<<<< HEAD
-  constructor(private _http: HttpClient) { };
-
-  /*public getColorValues(imageUrl:string): RootObject {
-    const app = new Clarifai.App({
-      ApiKey: "700aba9a33a94a48bcb5b88f53a414cc"
-    });
-    let obj;
-    app.models.predict(Clarifai.GENERAL_MODEL, imageUrl).then(
-      function(response) {
-        obj = response;
-      }
-    );
-    while(obj = null){}
-    return obj;
-  }
-  */
-  ngOnInit() { 
-  }
-=======
     constructor() {
     };
 
@@ -42,7 +16,6 @@ export class ClarifaiService {
         this.data = app.models.predict('eeed0b6733a644cea07cf4c60f87ebb7', imageUrl);
         return await this.data;
     }
->>>>>>> Dashboard_Clarifai
 }
 
 export interface Status {

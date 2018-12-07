@@ -12,7 +12,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ImageryComponent } from './imagery/imagery.component';
-import { ClarifaiService } from './clarifai_service/clarifai.service';
 
 import { UiSwitchModule } from 'ngx-toggle-switch';
 import { HumidityComponent } from './humidity/humidity.component';
@@ -20,11 +19,8 @@ import { PhValueComponent } from './ph-value/ph-value.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
 import { TestComponent } from './test/test.component';
-<<<<<<< HEAD
-=======
 
 import { ClarifaiService } from './clarifai_service/clarifai.service';
->>>>>>> Dashboard_Clarifai
 
 @NgModule({
   declarations: [
@@ -46,20 +42,6 @@ import { ClarifaiService } from './clarifai_service/clarifai.service';
     HttpModule,
     BrowserModule, UiSwitchModule,
     RouterModule.forRoot([
-<<<<<<< HEAD
-      { path: 'home', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'settings', component: SettingsComponent },
-      { path: 'imagery', component: ImageryComponent },
-      { path: 'humidity', component: HumidityComponent },
-      { path: 'ph-value', component: PhValueComponent },
-      { path: 'temperature', component: TemperatureComponent },
-      { path: 'light', component: LightComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-    ], { useHash: true }),
-  ],
-  providers: [ApiService],
-=======
       { path: 'home', component: HomeComponent},
       { path: 'login', component: LoginComponent},
       { path: 'settings', component: SettingsComponent},
@@ -73,9 +55,9 @@ import { ClarifaiService } from './clarifai_service/clarifai.service';
     ], { useHash: true }),
   ],
   providers: [
-    ClarifaiService
+    ClarifaiService,
+    ApiService
   ],
->>>>>>> Dashboard_Clarifai
   bootstrap: [AppComponent]
 })
 export class AppModule { }

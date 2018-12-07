@@ -28,7 +28,6 @@ export class NotificationComponent implements OnInit {
       .subscribe(res => {
         this.overview = res;
         Object.values(this.overview).forEach((p, i) => this.livedata[i] = p.value)
-        //console.log(this.livedata);
 
         // Nummersarray:
         // 1 = Temperatuur
@@ -98,13 +97,6 @@ export class NotificationComponent implements OnInit {
             this.notifmsg[3] = "De bodem is zeer basisch. (pH "+ this.livedata[5] + ")";
           }
         }
-
-        console.log(this.notifmsg[0]);
-        console.log(this.notifmsg[1]);
-        console.log(this.notifmsg[2]);
-        console.log(this.notifmsg[3]);
-
       })
   }
-
 }
