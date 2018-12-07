@@ -1,19 +1,18 @@
 import time
 import RPi.GPIO as GPIO
 import paho.mqtt.client as paho
-import getch
 
 # Import the ADS1x15 module.
 import Adafruit_ADS1x15
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(17, GPIO.IN)
-GPIO.setup(27, GPIO.IN)
-GPIO.setup(22, GPIO.IN)
-GPIO.setup(10, GPIO.IN)
-GPIO.setup(9, GPIO.IN)
-GPIO.setup(11, GPIO.IN)
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Create an ADS1115 ADC (16-bit) instance.
 adc = Adafruit_ADS1x15.ADS1115()
@@ -87,20 +86,20 @@ def analog_read():
 #Method for measuring water level sensor
 
 def measure_water_level():
-    if GPIO.input(11):
+    if (GPIO.input(17) == 1):
       waterlvlmsg = "85% - 100%"
-    elif GPIO.input(9):
+    elif (GPIO.input(27) == 1):
       waterlvlmsg = "70% - 85%"
-    elif GPIO.input(10):
+    elif (GPIO.input(22) == 1):
       waterlvlmsg = "55% - 70%"
-    elif GPIO.input(22):
+    elif (GPIO.input(10) == 1):
       waterlvlmsg = "40% - 55%"
-    elif GPIO.input(27):
+    elif (GPIO.input(9) == 1):
       waterlvlmsg = "25% - 40%"
-    elif GPIO.input(17):
+    elif (GPIO.input(11) == 1):
       waterlvlmsg = ">10% - 25%"
     else:
-      waterlvlmsg = "error"
+      waterlvlmsg = "no water detected"
       
     return waterlvlmsg
     
