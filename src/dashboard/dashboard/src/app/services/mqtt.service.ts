@@ -14,8 +14,8 @@ export class MqttService extends BaseService {
   connect(connection: Connection) {
 
     return new Promise((resolve, reject) => {
-      var socket = new WebSocket("ws://mqtt-ws-bridge.herokuapp.com/" + connection.topic + "?host=" + connection.host + "&port=" + connection.port);
-
+      var socket = new WebSocket("ws://myHost:8080/foobar?clientId=myClient&username=foo&password=myPassword&qos=1" + connection.topic + "?host=" + connection.host + "&port=" + connection.port);
+      console.log(socket)
       var num;
 
       socket.onerror = (e) => {

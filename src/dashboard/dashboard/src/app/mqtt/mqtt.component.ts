@@ -9,9 +9,9 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./mqtt.component.css']
 })
 export class MqttComponent implements OnInit {
-  host = "broker.mqttdashboard.com";
-  port = 8000;
-  topic = "testtopic/labfarm";
+  host = "test.mosquitto.org";
+  port = 1883;
+  topic = "bjaanes/mock/random10k";
 
   connection: Connection;
   public loading: boolean = false;
