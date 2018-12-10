@@ -1,18 +1,19 @@
 import time
 import RPi.GPIO as GPIO
 import paho.mqtt.client as paho
+import getch
 
 # Import the ADS1x15 module.
 import Adafruit_ADS1x15
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(17, GPIO.IN)
+GPIO.setup(27, GPIO.IN)
+GPIO.setup(22, GPIO.IN)
+GPIO.setup(10, GPIO.IN)
+GPIO.setup(9, GPIO.IN)
+GPIO.setup(11, GPIO.IN)
 
 # Create an ADS1115 ADC (16-bit) instance.
 adc = Adafruit_ADS1x15.ADS1115()
@@ -86,20 +87,21 @@ def analog_read():
 #Method for measuring water level sensor
 
 def measure_water_level():
-    if (GPIO.input(17) == 1):
+
+    if GPIO.input(11) == 1:
       waterlvlmsg = "85% - 100%"
-    elif (GPIO.input(27) == 1):
+    elif GPIO.input(9) == 1:
       waterlvlmsg = "70% - 85%"
-    elif (GPIO.input(22) == 1):
+    elif GPIO.input(10) == 1:
       waterlvlmsg = "55% - 70%"
-    elif (GPIO.input(10) == 1):
+    elif GPIO.input(22) == 1:
       waterlvlmsg = "40% - 55%"
-    elif (GPIO.input(9) == 1):
+    elif GPIO.input(27)== 1:
       waterlvlmsg = "25% - 40%"
-    elif (GPIO.input(11) == 1):
+    elif GPIO.input(17)== 1:
       waterlvlmsg = ">10% - 25%"
     else:
-      waterlvlmsg = "no water detected"
+      waterlvlmsg = "error"
       
     return waterlvlmsg
     
@@ -148,7 +150,7 @@ while True:
     values[5] = analog_read()
     values[6] = measure_water_level()
     print('| {0:>6.2f} | {1:>6.2f} | {2:>6.2f} | {3:>6.2f} | {4:>6.2f} | {5:>6.2f} | {6}'.format(*values))
-    #message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])
+    message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
     on_publish(message)
     
     if(c == "q"):
