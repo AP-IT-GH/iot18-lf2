@@ -5,39 +5,50 @@
 
     <a [routerLink]="['/settings']">
       <div class="sidebar-infoblock">
-        Lamp: <b><span style='color:green'>AAN</span></b>
+        Lamp:
+        <b>
+          <span style='color:green'>AAN</span>
+        </b>
       </div>
     </a>
     <a [routerLink]="['/temperature']">
       <div class="sidebar-infoblock">
-        Temperatuur: <b>21.2°c</b>
+        Temperatuur:
+        <b>{{temperature}}</b>
       </div>
     </a>
     <a [routerLink]="['/humidity']">
       <div class="sidebar-infoblock">
-        Luchtvochtigheid: <b>41%</b>
+        Luchtvochtigheid:
+        <b>{{humidityAir}}</b>
       </div>
     </a>
     <a [routerLink]="['/humidity']">
       <div class="sidebar-infoblock">
-        Bodemvochtigheid: <b>88%</b>
+        Bodemvochtigheid:
+        <b>{{humidityGround}}</b>
       </div>
     </a>
     <a [routerLink]="['/light']">
       <div class="sidebar-infoblock">
-        Licht: <b>446 Lumen</b>
+        Licht:
+        <b>{{light}}</b>
       </div>
     </a>
     <a [routerLink]="['/ph-value']">
       <div class="sidebar-infoblock">
-        pH-waarde: <b>7.3</b>
+        pH-waarde:
+        <b>{{ph}}</b>
       </div>
     </a>
     <a [routerLink]="['/settings']">
       <div class="sidebar-infoblock">
-        Water: <b>92%</b>
+        Water:
+        <b>{{water}}</b>
       </div>
     </a>
 
   </div>
+  <button class="button" (click)="subscribe()">Subscribe</button>
+  <button class="button" (click)="unsubscribe()">Unsubscribe</button>
 </div>

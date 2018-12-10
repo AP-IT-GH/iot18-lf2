@@ -1,9 +1,22 @@
 <div class="content">
 
-  Host
-  <input type="text" id="host" class="textbox" placeholder="Voer host in" [(ngModel)]='host'> Port
-  <input type="number" id="port" class="textbox" placeholder="Voer port in" [(ngModel)]='port'> Topic
+  Topic
   <input type="text" id="topic" class="textbox" placeholder="Voer topic in" [(ngModel)]='topic'>
-  <button class="button" (click)="connect()">Connect</button>
+  <button class="button" (click)="subscribe()">Subscribe</button>
+  <button class="button" (click)="unsubscribe()">Unsubscribe</button>
+  <br>
+  <div>
+    <div>
+      <h1>Messages:</h1>
+      <p *ngFor='let message of messages'>
+        {{message}}
+      </p>
+    </div>
+    <div>
+      <h1>Status info:</h1>
+      <p>
+      </p>
+    </div>
+  </div>
 
 </div>

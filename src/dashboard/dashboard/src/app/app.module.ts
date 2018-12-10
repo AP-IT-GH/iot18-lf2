@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxMqttClientModule } from '../../node_modules/ngx-mqtt-client'
 
 import { ApiService } from './services/api.service';
 import { AppComponent } from './app.component';
@@ -20,10 +22,15 @@ import { PhValueComponent } from './ph-value/ph-value.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
 import { TestComponent } from './test/test.component';
-import { MqttService } from './services/mqtt.service';
 import { MqttComponent } from './mqtt/mqtt.component';
-import { MqttDashboardComponent } from './mqtt-dashboard/mqtt-dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { IMqttMessage, MqttModule, IMqttServiceOptions } from '../../node_modules/ngx-mqtt';
+
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.mqttdashboard.com',
+  port: 8000,
+  path: '/mqtt'
+};
 
 @NgModule({
   declarations: [
@@ -39,12 +46,12 @@ import { FormsModule } from '@angular/forms';
     PhValueComponent,
     TemperatureComponent,
     LightComponent,
-    MqttComponent,
-    MqttDashboardComponent
+    MqttComponent
   ],
   imports: [
-    HttpModule, FormsModule,
+    HttpModule, HttpClientModule, FormsModule,
     BrowserModule, UiSwitchModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
@@ -56,9 +63,9 @@ import { FormsModule } from '@angular/forms';
       { path: 'light', component: LightComponent },
       { path: 'mqtt', component: MqttComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-    ], { useHash: true }),
+    ], { useHash: true })
   ],
-  providers: [ApiService, MqttService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
