@@ -4,3 +4,4 @@
 - ElektrischeSchemaFinal is het volledige circuit samengevoegd.
 - SchemaForPCB & BackupBatteryForPCB zijn de finale schema's voor de PCB's
 - PCB_IoT_Final & BackupBatteryPCB_Final waren de eerste finale versies van de PCB's voor de aanpassingen.
+- Final_PCB_BackupBattery is het finale PCB voor het backup batterij circuit.
