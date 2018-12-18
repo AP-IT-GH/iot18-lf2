@@ -6,3 +6,4 @@
 - PCB_IoT_Final & BackupBatteryPCB_Final waren de eerste finale versies van de PCB's voor de aanpassingen.
 - Final_PCB_BackupBattery is het finale PCB voor het backup batterij circuit.
 - Final_IoT_PCB is het finale PCB voor het algemene circuit.
+- ComponentsPCB is een overview van alle componenten op de PCB's.
