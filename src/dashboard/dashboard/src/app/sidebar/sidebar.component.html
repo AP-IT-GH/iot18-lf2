@@ -5,39 +5,59 @@
 
     <a [routerLink]="['/settings']">
       <div class="sidebar-infoblock">
-        Lamp: <b><span style='color:green'>AAN</span></b>
+        Lamp:
+        <b>
+          <span style='color:green'>AAN</span>
+        </b>
       </div>
     </a>
     <a [routerLink]="['/temperature']">
       <div class="sidebar-infoblock">
-        Temperatuur: <b>{{ livedata[1] }} °c</b>
+        Temperatuur:
+        <b>{{ livedata[1] }} °c</b>
+        <b>{{temperature}}</b>
       </div>
     </a>
     <a [routerLink]="['/humidity']">
       <div class="sidebar-infoblock">
-        Luchtvochtigheid: <b>{{ livedata[2] }}%</b>
+        Luchtvochtigheid:
+        <b>{{ livedata[2] }}%</b>
+        <b>{{humidityAir}}</b>
       </div>
     </a>
     <a [routerLink]="['/humidity']">
       <div class="sidebar-infoblock">
-        Bodemvochtigheid: <b>{{ livedata[3] }}%</b>
+        Bodemvochtigheid:
+        <b>{{ livedata[3] }}%</b>
+        <b>{{humidityGround}}</b>
       </div>
     </a>
     <a [routerLink]="['/light']">
       <div class="sidebar-infoblock">
-        Licht: <b>{{ livedata[4] }} Lumen</b>
+        Licht:
+        <b>{{ livedata[4] }} Lumen</b>
+        Licht:
+        <b>{{light}}</b>
       </div>
     </a>
     <a [routerLink]="['/ph-value']">
       <div class="sidebar-infoblock">
-        pH-waarde: <b>{{ livedata[5] }}</b>
+        pH-waarde:
+        <b>{{ livedata[5] }}</b>
+        pH-waarde:
+        <b>{{ph}}</b>
       </div>
     </a>
     <a [routerLink]="['/settings']">
       <div class="sidebar-infoblock">
-        Water: <b>0%</b>
+        Water:
+        <b>0%</b>
+        Water:
+        <b>{{water}}</b>
       </div>
     </a>
 
   </div>
+  <button class="button" (click)="subscribe()">Subscribe</button>
+  <button class="button" (click)="unsubscribe()">Unsubscribe</button>
 </div>
