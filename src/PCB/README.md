@@ -7,3 +7,4 @@
 - Final_PCB_BackupBattery is het finale PCB voor het backup batterij circuit.
 - Final_IoT_PCB is het finale PCB voor het algemene circuit.
 - ComponentsPCB is een overview van alle componenten op de PCB's.
+- PCB_generalcircuit_pinout & PCB_backupcircuit_pinout zijn de pinout schema's van de PCB's voor een gebruiksvriendelijkere werkwijze.
