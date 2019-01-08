@@ -40,6 +40,7 @@ namespace LabFarm.Controllers
             return new OkObjectResult(data);
         }
 
+        // GET: api/data/(type)
         [HttpGet("{type}")]
         public async Task<IActionResult> GetSensorvaluesByType([FromRoute] string type)
         {
@@ -52,7 +53,7 @@ namespace LabFarm.Controllers
             return new OkObjectResult(sensor);
         }
 
-        // GET: api/Sensorvalue/5
+        // GET: api/data/(type)/(id)
         [HttpGet("{type}/{id}")]
         public async Task<IActionResult> GetSensorvalue([FromRoute] int id)
         {
@@ -71,7 +72,7 @@ namespace LabFarm.Controllers
             return Ok(sensorvalue);
         }
 
-        // PUT: api/Sensorvalue/5
+        // PUT: api/data/(id)
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSensorvalue([FromRoute] int id, [FromBody] Sensorvalue sensorvalue)
         {
@@ -106,9 +107,36 @@ namespace LabFarm.Controllers
             return NoContent();
         }
 
-        // POST: api/Sensorvalue
+        // POST: api/data
         [HttpPost]
-        public async Task<IActionResult> PostSensorvalue([FromBody] Sensorvalue sensorvalue)
+        public async Task<IActionResult> PostSensorvalues([FromBody] string sensorvalue)
+        {
+            //temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
+            if(true == string.IsNullOrEmpty(sensorvalue))
+            {
+                return BadRequest();
+            }
+
+            int plantId = 1;
+            string[] valueArray = sensorvalue.Split(" ; ");
+            //int[] sensorId = new int[] { 3, 2, 3, 3, 4, 1, 6 };
+            Sensorvalue[] sensorValues = new Sensorvalue[valueArray.Length];
+            
+            for(int i = 0; i<valueArray.Length; i++)
+            {
+                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i]), Timestamp = DateTime.Now, SensorId = i+1, PlantId = plantId };
+            }
+
+
+            _context.Sensorvalues.AddRange(sensorValues);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        // POST: api/data
+        [HttpPost("{type}")]
+        public async Task<IActionResult> PostSensorvalueFromType([FromBody] Sensorvalue sensorvalue)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +149,7 @@ namespace LabFarm.Controllers
             return CreatedAtAction("GetSensorvalue", new { id = sensorvalue.SensorvalueId }, sensorvalue);
         }
 
-        // DELETE: api/Sensorvalue/5
+        // DELETE: api/data/(id)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSensorvalue([FromRoute] int id)
         {
