@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { NgxMqttClientModule } from '../../node_modules/ngx-mqtt-client'
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/imgur.service';
