@@ -9,7 +9,7 @@ import { Sensor } from '../models/sensor';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  overview: Sensorvalue[] = [];
+  data: any[];
 
   constructor(private api: ApiService) { }
 
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
   getOverview() {
     this.api.getOverview()
       .subscribe(res => {
-        this.overview = res;
-        console.log(res);
+        this.data = res;
+        console.log(this.data);
       })
   }
 

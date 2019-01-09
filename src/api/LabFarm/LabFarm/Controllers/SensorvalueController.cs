@@ -9,6 +9,7 @@ using LabFarm.Data;
 using LabFarm.Models;
 using Microsoft.AspNetCore.Cors;
 using System.Dynamic;
+using Newtonsoft.Json;
 
 namespace LabFarm.Controllers
 {
@@ -28,14 +29,17 @@ namespace LabFarm.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSensorvaluesOverview()
         {
-            dynamic data = new ExpandoObject();
-            data.Lamp = false;
-            data.Temperature = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Temperature")).LastAsync();
-            data.HumidityAir = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityAir")).LastAsync();
-            data.HumidityGround = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityGround")).LastAsync();
-            data.Light = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Light")).LastAsync();
-            data.Ph = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Ph")).LastAsync();
-            data.Water = 26;
+            
+            var data = new
+            {
+                Lamp = "test",
+                Water = 26,
+                Temperature = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Temperature")).LastAsync(),
+                HumidityAir = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityAir")).LastAsync(),
+                HumidityGround = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityGround")).LastAsync(),
+                Light = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Light")).LastAsync(),
+                Ph = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Ph")).LastAsync()
+            };
 
             return new OkObjectResult(data);
         }
@@ -109,10 +113,12 @@ namespace LabFarm.Controllers
 
         // POST: api/data
         [HttpPost]
-        public async Task<IActionResult> PostSensorvalues([FromBody] string sensorvalue)
+        public async Task<IActionResult> PostSensorvalues()
         {
+            var test = Request.Headers["key"];
+            var sensorvalue = "test";
             //temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
-            if(true == string.IsNullOrEmpty(sensorvalue))
+            if (true == string.IsNullOrEmpty(sensorvalue))
             {
                 return BadRequest();
             }
