@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Convert from 'color-convert'
 import * as hex from 'hex2dec';
 import * as clarifai from '../clarifai_service/clarifai.service';
+import { AuthService, ImgurService } from '../services/imgur.service';
 
 @Component({
     selector: 'app-imagery',
@@ -11,7 +12,7 @@ import * as clarifai from '../clarifai_service/clarifai.service';
 
 export class ImageryComponent implements OnInit {
 
-    constructor(private _svc: clarifai.ClarifaiService) { }
+    constructor(private Clarifai: clarifai.ClarifaiService, private Auth: AuthService, private Imgur: ImgurService) { }
 
     url:string;
     Output:clarifai.RootObject;
@@ -78,7 +79,7 @@ export class ImageryComponent implements OnInit {
 
     pullData(){
         this.url = "https://us-east-1.tchyn.io/snopes-production/uploads/2017/06/Dieffenbachia_amoena_poison_fb.jpg";
-        this._svc.getColorValues(this.url).then( x =>{
+        this.Clarifai.getColorValues(this.url).then( x =>{
             this.Output = x;
             this.ColorData = x.outputs[0].data.colors;
             this.calculateHSL(this.ColorData[length].w3c.hex);
@@ -90,6 +91,19 @@ export class ImageryComponent implements OnInit {
             this.MinPlantHealth = this.PlantHealth.toFixed(0) + "%";
             //console.log("PlantHealth%: " + this.MinPlantHealth + "\r\nGreenPercentage%: " + this.MinGreenPercentage);
         });
+    }
+
+    nextImage(event, id:number){
+        console.log("Called nextImage");
+    }
+    previousImage(event, id:number){
+        console.log("Called previousImage");
+    }
+    playImage(event, id:number){
+        console.log("Called playImage");
+    }
+    stopImage(event, id:number){
+        console.log("Called stopImage");
     }
 }
 

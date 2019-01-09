@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { NgxMqttClientModule } from '../../node_modules/ngx-mqtt-client'
 
 import { ApiService } from './services/api.service';
+import { AuthService } from './services/imgur.service';
+import { ImgurService } from './services/imgur.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -69,7 +71,9 @@ import { ClarifaiService } from './clarifai_service/clarifai.service';
   ],
   providers: [
     ClarifaiService,
-    ApiService
+    ApiService,
+    AuthService,
+    ImgurService
   ],
   bootstrap: [AppComponent]
 })
