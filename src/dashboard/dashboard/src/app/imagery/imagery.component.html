@@ -1,7 +1,13 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+</head>
 <div class="content">
   <h1>Beeldherkenning</h1>
   <div class="content-box">
-    Hello world, in deze box komt een hele hoop inhoud!<br><br>
+    Hello world, in deze box komt een hele hoop inhoud!
+    <br>
+    <br>
     <div class="col-4">
       <div class="col-inner">
         Gezondheid:
@@ -26,5 +32,37 @@
         </div>
       </div>
     </div>
+    <button (click)="this.Auth.login()">Imgur</button>
+    <div id="imgContainer">
+      <div class="dynamic_image_block">
+        <h2>Plant 1</h2>
+        <img class="dynamic_image" src="https://i.imgur.com/hLy8bqV.png">
+        <div class="image_control">
+            <span (click)="nextImage($event, 1)" class="fas fa-backward"></span>
+            <span (click)="previousImage($event, 1)" class="fas fa-forward"></span>
+            <span (click)="playImage($event, 1)" class="fas fa-play"></span>
+            <span (click)="stopImage($event, 1)" class="fas fa-stop"></span>
+        </div>
+      </div>
+      <div class="dynamic_image_block">
+        <h2>Plant 2</h2>
+        <img class="dynamic_image" src="https://i.imgur.com/hLy8bqV.png">
+        <div class="image_control">
+            <span (click)="nextImage($event, 2)" class="fas fa-backward"></span>
+            <span (click)="previousImage($event, 2)" class="fas fa-forward"></span>
+            <span (click)="playImage($event, 2)" class="fas fa-play"></span>
+            <span (click)="stopImage($event, 2)" class="fas fa-stop"></span>
+        </div>
+      </div>
+      <div class="dynamic_image_block">
+        <h2>Plant 3</h2>
+        <img class="dynamic_image" src="https://i.imgur.com/hLy8bqV.png">
+        <div class="image_control">
+            <span (click)="nextImage($event, 3)" class="fas fa-backward"></span>
+            <span (click)="previousImage($event, 3)" class="fas fa-forward"></span>
+            <span (click)="playImage($event, 3)" class="fas fa-play"></span>
+            <span (click)="stopImage($event, 3)" class="fas fa-stop"></span>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

@@ -1,0 +1,36 @@
+#imgContainer {
+    width: 100%;
+    display: flex;
+
+}
+
+.dynamic_image_block {
+    flex-grow: 1;
+    position: relative;
+    max-width: 800px;
+}
+
+.dynamic_image {
+    width: 90%;
+}
+
+.image_control {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.image_control span {
+    color: rgba(255,165,0,0.5);
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+.image_control span:hover {
+    color: orange;
+}
