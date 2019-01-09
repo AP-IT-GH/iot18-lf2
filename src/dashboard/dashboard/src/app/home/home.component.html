@@ -1,11 +1,11 @@
 <div class="content">
-  <div class="content-box">
+  <div class="content-box" *ngIf="data">
     <div class="col-4 center-content col-hover" [routerLink]="['/temperature']">
       <div class="col-inner">
         Temperatuur
         <br>
         <img src="../../assets/arrow-right.png" width="34px" style='margin:12px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.Temperature.value }} °c</span>
+        <span style='font-size:64px;'>{{ data.temperature.value }} C°</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/humidity']">
@@ -13,7 +13,7 @@
         Luchtvochtigheid
         <br>
         <img src="../../assets/arrow-up.png" width="15px" style='margin:8px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.HumidityAir.value }}%</span>
+        <span style='font-size:64px;'>{{ data.humidityAir.value }}</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/humidity']">
@@ -21,7 +21,7 @@
         Bodemvochtigheid
         <br>
         <img src="../../assets/arrow-down.png" width="15px" style='margin:8px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.HumidityGround.value }}%</span>
+        <span style='font-size:64px;'>{{ data.humidityGround.value }}</span>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         Licht
         <br>
         <img src="../../assets/arrow-up.png" width="15px" style='margin:8px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.Light.value }} Lu</span>
+        <span style='font-size:64px;'>{{ data.light.value }}</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/ph-value']">
@@ -38,7 +38,7 @@
         pH-waarde
         <br>
         <img src="../../assets/arrow-right.png" width="34px" style='margin:12px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.Ph.value }}</span>
+        <span style='font-size:64px;'>{{ data.ph.value }}</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/settings']">
@@ -46,7 +46,7 @@
         Water
         <br>
         <img src="../../assets/arrow-down.png" width="15px" style='margin:8px; margin-right:14px'>
-        <span style='font-size:64px;'>{{ overview.Water }}%</span>
+        <span style='font-size:64px;'>{{ data.water }}</span>
       </div>
     </div>
   </div>

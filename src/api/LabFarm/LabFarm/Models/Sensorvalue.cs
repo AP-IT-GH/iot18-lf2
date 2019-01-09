@@ -10,7 +10,7 @@ namespace LabFarm.Models
     public class Sensorvalue
     {
         public int SensorvalueId { get; set; }
-        public int Value { get; set; }
+        public double Value { get; set; }
         public DateTime Timestamp { get; set; }
         public int SensorId { get; set; }
         public int? PlantId { get; set; }
