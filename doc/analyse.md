@@ -75,7 +75,11 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 
 ![Foto](/doc/img/foto_schema.PNG) 
 
+![Foto](/doc/img/PCB_generalcircuit_pinout.png) 
+
 ![Foto](/doc/img/Foto_backup.PNG) 
+
+![Foto](/doc/img/PCB_backupcircuit_pinout.png) 
 
 
 #### Fysiek design (Optioneel)
