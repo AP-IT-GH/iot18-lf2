@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
 import { ClarifaiService, RootObject } from '../clarifai_service/clarifai.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { ClarifaiService, RootObject } from '../clarifai_service/clarifai.servic
 })
 export class TestComponent implements OnInit {
 
-  constructor(private _svc:ClarifaiService) { }
+  constructor(private _svc: ClarifaiService) { }
 
   ngOnInit() {
-    
+
   }
 }

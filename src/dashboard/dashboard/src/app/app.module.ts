@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { ApiService } from './services/api.service';
-import { AuthService } from './services/imgur.service';
-import { ImgurService } from './services/imgur.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -70,9 +68,7 @@ import { ClarifaiService } from './clarifai_service/clarifai.service';
   ],
   providers: [
     ClarifaiService,
-    ApiService,
-    AuthService,
-    ImgurService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
