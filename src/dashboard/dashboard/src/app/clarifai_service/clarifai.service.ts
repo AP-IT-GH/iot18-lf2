@@ -1,15 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as Clarifai from 'clarifai';
 
 @Injectable()
 
 export class ClarifaiService {
     constructor() {
-    };
-
-    ngOnInit() {
-        
     }
+
     public data;
     async getColorValues(imageUrl: string): Promise<RootObject> {
         const app = new Clarifai.App({apiKey: '700aba9a33a94a48bcb5b88f53a414cc'});

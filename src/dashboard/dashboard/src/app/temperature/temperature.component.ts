@@ -22,20 +22,22 @@ export class TemperatureComponent implements OnInit {
   }
 
   getTemperature() {
-    let type = "temperature";
+    const type = 'temperature';
     this.api.getSensor(type)
       .subscribe(res => {
         this.temperature = res.sensorvalues;
         if (this.temperatureValue.length >= 24) {
           this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
           this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
           this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
           this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
           this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();
-      })
+      });
   }
 
   AddChart() {
@@ -48,13 +50,13 @@ export class TemperatureComponent implements OnInit {
           data: this.temperatureValue,
           fill: false,
           lineTension: 0.2,
-          borderColor: "#f92",
+          borderColor: '#f92',
           borderWidth: 1.5
         }]
       },
       options: {
         title: {
-          text: "Line Chart",
+          text: 'Line Chart',
           display: false
         }
       },
@@ -65,7 +67,7 @@ export class TemperatureComponent implements OnInit {
           }
         }]
       }
-    })
+    });
   }
 
 }

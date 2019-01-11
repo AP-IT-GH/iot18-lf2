@@ -11,7 +11,7 @@ import { IMqttMessage } from 'ngx-mqtt';
   styleUrls: ['./mqtt.component.css']
 })
 export class MqttComponent implements OnInit {
-  topic: string = 'testtopic/labfarm'
+  topic = 'testtopic/labfarm';
   private subscription: Subscription;
   public messages: string[] = [];
 
@@ -19,24 +19,28 @@ export class MqttComponent implements OnInit {
     this.subscribe();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   public ngOnDestroy() {
-    if (this.subscription)
+    if (this.subscription) {
       this.unsubscribe();
+    }
   }
 
   public subscribe() {
     this.subscription = this._mqttService.observe(this.topic).subscribe((message: IMqttMessage) => {
       this.messages.push(message.payload.toString());
     });
-    if (this._mqttService.onConnect)
-      console.log('Connected')
+    if (this._mqttService.onConnect) {
+      console.log('Connected');
+    }
   }
 
   public unsubscribe() {
     this.subscription.unsubscribe();
-    if (this._mqttService.onClose)
-      console.log('Disconnected')
-  };
+    if (this._mqttService.onClose) {
+      console.log('Disconnected');
+    }
+  }
 
   ngOnInit() {
 
