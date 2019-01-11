@@ -77,6 +77,9 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 ![Foto](/doc/img/constructie.PNG)
 
 
+![Foto](/doc/img/Algemeen_PCB.PNG)
+
+
 #### Niet functionele analyse 
 
 ## Functionaliteit
