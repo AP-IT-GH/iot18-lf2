@@ -11,7 +11,8 @@ import { Sensorvalue } from '../models/sensorvalue';
 
 @Injectable()
 export class ApiService extends BaseService {
-  private baseApi: string = 'http://localhost:59063/api/';
+  private baseApi: string = 'http://labfarmsql.azurewebsites.net/api/';
+  //private baseApi: string = 'http://localhost:59063/api/';
 
   constructor(private http: Http) {
     super();

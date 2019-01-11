@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MqttService } from '../../../node_modules/ngx-mqtt/src/mqtt.service';
 import { FormsModule } from '@angular/forms';
-import { IClientOptions } from 'mqtt';
 import { Subscription } from 'rxjs';
 import { IMqttMessage } from 'ngx-mqtt';
 
