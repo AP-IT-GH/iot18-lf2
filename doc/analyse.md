@@ -74,6 +74,8 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 #### Schema's van het product
 
 #### Fysiek design (Optioneel)
+![Foto](/doc/img/constructie.PNG)
+
 
 #### Niet functionele analyse 
 
