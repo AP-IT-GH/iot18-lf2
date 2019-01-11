@@ -62,7 +62,7 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 ![Diagram](/doc/img/Algemene_A2.PNG)  
 
 #### Gedetailleerde diagrammen
-![Diagram](/doc/img/diagram.png)  
+![Diagram](/doc/img/DiagramHardwareUpdate.png)  
   
 ---  
   
