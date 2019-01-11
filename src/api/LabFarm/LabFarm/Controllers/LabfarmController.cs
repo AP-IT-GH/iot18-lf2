@@ -25,6 +25,7 @@ namespace LabFarm.Controllers
         [HttpGet]
         public IEnumerable<Labfarm> GetLabfarms()
         {
+
             return _context.Labfarms;
         }
 

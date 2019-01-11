@@ -16,7 +16,9 @@ namespace LabFarm.Controllers
 
         public SensorController(LabContext context)
         {
+
             this.context = context;
+            
         }
 
         [HttpGet]

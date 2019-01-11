@@ -5,14 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\LabFarmIOT - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
-    <PackageReference Include="MQTTnet" Version="2.8.4" />
-    <PackageReference Include="MQTTnet.AspNetCore" Version="2.8.4" />
   </ItemGroup>
 
   <ItemGroup>

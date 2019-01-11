@@ -73,7 +73,23 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
 ![Diagram](/doc/img/EntityRelationshipDiagram.jpeg)
 #### Schema's van het product
 
+![Foto](/doc/img/foto_schema.PNG) 
+
+![Foto](/doc/img/PCB_generalcircuit_pinout.png) 
+
+![Foto](/doc/img/Foto_backup.PNG) 
+
+![Foto](/doc/img/PCB_backupcircuit_pinout.png) 
+
+
 #### Fysiek design (Optioneel)
+![Foto](/doc/img/constructie.PNG)
+
+
+![Foto](/doc/img/Algemeen_PCB.PNG)
+
+![Foto](/doc/img/PCB_foto.PNG)  
+
 
 #### Niet functionele analyse 
 

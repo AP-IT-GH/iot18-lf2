@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Server;
 using Microsoft.AspNetCore.Hosting;
-using MQTTnet;
-using MQTTnet.Server;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 

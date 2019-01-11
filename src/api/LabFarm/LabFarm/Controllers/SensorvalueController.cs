@@ -115,8 +115,7 @@ namespace LabFarm.Controllers
         [HttpPost]
         public async Task<IActionResult> PostSensorvalues()
         {
-            var test = Request.Headers["key"];
-            var sensorvalue = "test";
+            var sensorvalue = Request.Headers["key"].ToString();
             //temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
             if (true == string.IsNullOrEmpty(sensorvalue))
             {
@@ -125,12 +124,11 @@ namespace LabFarm.Controllers
 
             int plantId = 1;
             string[] valueArray = sensorvalue.Split(" ; ");
-            //int[] sensorId = new int[] { 3, 2, 3, 3, 4, 1, 6 };
             Sensorvalue[] sensorValues = new Sensorvalue[valueArray.Length];
             
             for(int i = 0; i<valueArray.Length; i++)
             {
-                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i]), Timestamp = DateTime.Now, SensorId = i+1, PlantId = plantId };
+                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i]), Timestamp = DateTime.Now.ToLocalTime(), SensorId = i+1, PlantId = plantId };
             }
 
 
