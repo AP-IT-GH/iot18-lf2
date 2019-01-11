@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using LabFarm.Data;
-using MQTTnet.AspNetCore;
+using Newtonsoft.Json;
 
 namespace LabFarm
 {
@@ -26,17 +26,12 @@ namespace LabFarm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local ;
+            });
 
             services.AddDbContext<LabContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddHostedMqttServer(builder => builder.WithDefaultEndpointPort(1883));
-
-            //this adds tcp server support based on System.Net.Socket
-            services.AddMqttTcpServerAdapter();
-
-            //this adds websocket support
-            services.AddMqttWebSocketServerAdapter();
 
             services.AddCors(options =>
             {
@@ -57,8 +52,6 @@ namespace LabFarm
             }
 
             app.UseMvc();
-
-            app.UseMqttEndpoint();
 
             app.UseCors("CorsPolicy");
 
