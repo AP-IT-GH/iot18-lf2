@@ -13,6 +13,8 @@ import { AuthService, ImgurService } from '../services/imgur.service';
 export class ImageryComponent implements OnInit {
 
     constructor(private Clarifai: clarifai.ClarifaiService, private Auth: AuthService, private Imgur: ImgurService) { }
+    LabfarmUrl:string[][];
+    LabfarmAlbumHash:string[]=["","",""];
 
     url:string;
     Output:clarifai.RootObject;
@@ -31,6 +33,7 @@ export class ImageryComponent implements OnInit {
 
     ngOnInit() {
         this.pullData();
+
     }
 
     calculateGreenPercentage(hsl:HSL):number{
