@@ -6,17 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvxWqz4XFpUqjfdG3ntHU5gAAAAACAAAAAAAQZgAAAAEAACAAAAB77YGAqjufysOHVwg8QWM0k0UjWXSSi6Cv/Y/Jckh2SwAAAAAOgAAAAAIAACAAAABiiCh+5KXqYDdg5ha2Z7Avmj1WDeTHO8H8A0GSzdYVOYAAAADGUuSPSyoHfEE6jGFM1UIderP99OmKzcrfZ4LV2EN1Ob1x/X79VLjCY6Miqhj5WAF6fqfdV9yO7eBlK7y2Qt9JYyYwz5gRso8z8b/2SXeErLhXyiVbhrxxaktHSgDipCEjmkcTVQryJZBdWao6AI7qjsRMVdPlZBDr/XBB3+EWwUAAAACjkOwsqexsgJaEBQZHlMqAZr+pVKWWxlDEvlKx+c4pzPYziTLw50mfzG8lM+n0PuRLocv1hHcVcLjCQo7zgmmN</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvPVlGRXw+0aUMLNJ+pwGzQAAAAACAAAAAAAQZgAAAAEAACAAAACgfp8gvUy8X6X6lkmkS02QezyUAXbvSPuPx046FzKEzAAAAAAOgAAAAAIAACAAAABki0FfTDKwt0P8hPMhNdOmASxptoHM3EJ57Y8D8i6SIIAAAAC+ajEAVu3UJfiBmJy/fidEAPMcCfVCewDYPxhg7kkWUFQrZ75rbjNZQapnlOQVFvTOLE+yN142ZVPclpouK9PA65O/Q9BX3LQigtjtmI6tdCOyqhg37d+1KjMDPVTPJoB04CWrWOXAWrqUsQqx/nwy1sbFBYQ/8N7wQdH3WxiBekAAAAA0tM30MDY+8DIZ7qbUptrvuPePx1L8cbJkrIcxicrP3YUYQuIwCLRAYYC/PZzPW3LWIdWGSYirdD2NgGin2xfn</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">
       <Value>Server=(localdb)\mssqllocaldb;Database=LabFarmDB</Value>
     </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="LabFarm.Data.LabContext">
-      <Value>
-      </Value>
-    </EFMigrations>
   </ItemGroup>
 </Project>
