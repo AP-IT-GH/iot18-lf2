@@ -24,7 +24,7 @@ export class PhValueComponent implements OnInit {
     let type = "ph";
     this.api.getSensor(type)
       .subscribe(res => {
-        this.ph = res.sensorvalues;
+        this.ph = res;
         if (this.phValue.length >= 24) {
           this.ph.forEach((p, i) => this.phValue[i] = p.value);
           this.ph.slice(this.ph.length - 24, this.ph.length).forEach((p, i) => this.phValue[i] = p.value);

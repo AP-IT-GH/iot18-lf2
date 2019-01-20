@@ -33,7 +33,7 @@ namespace LabFarm.Controllers
             var data = new
             {
                 Lamp = "test",
-                Water = 26,
+                Water = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Water")).LastAsync(),
                 Temperature = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("Temperature")).LastAsync(),
                 HumidityAir = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityAir")).LastAsync(),
                 HumidityGround = await _context.Sensorvalues.Where(s => s.Sensor.SensorType.Equals("HumidityGround")).LastAsync(),
@@ -48,7 +48,7 @@ namespace LabFarm.Controllers
         [HttpGet("{type}")]
         public async Task<IActionResult> GetSensorvaluesByType([FromRoute] string type)
         {
-            var sensor = await _context.Sensors.Include(s => s.Sensorvalues).SingleOrDefaultAsync(s => s.SensorType.Equals(type));
+            var sensor = await _context.Sensorvalues.Include(s => s.Sensor).Where(t => t.Sensor.SensorType.Equals(type)).OrderBy(o => o.Timestamp).ToListAsync();
             if (sensor == null)
             {
                 return NotFound();

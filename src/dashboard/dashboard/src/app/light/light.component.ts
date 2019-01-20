@@ -24,7 +24,7 @@ export class LightComponent implements OnInit {
     let type = "light";
     this.api.getSensor(type)
       .subscribe(res => {
-        this.light = res.sensorvalues;
+        this.light = res;
         if (this.lightValue.length >= 24) {
           this.light.forEach((p, i) => this.lightValue[i] = p.value);
           this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightValue[i] = p.value);

@@ -25,7 +25,7 @@ export class TemperatureComponent implements OnInit {
     let type = "temperature";
     this.api.getSensor(type)
       .subscribe(res => {
-        this.temperature = res.sensorvalues;
+        this.temperature = res;
         if (this.temperatureValue.length >= 24) {
           this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
           this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureValue[i] = p.value);

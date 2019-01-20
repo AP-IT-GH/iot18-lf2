@@ -28,7 +28,7 @@ export class HumidityComponent implements OnInit {
     let type = "humidityAir";
     this.api.getSensor(type)
       .subscribe(res => {
-        this.humidityAir = res.sensorvalues;
+        this.humidityAir = res;
         if (this.humidityAirValue.length >= 24) {
           this.humidityAir.forEach((p, i) => this.humidityAirValue[i] = p.value);
           this.humidityAir.slice(this.humidityAir.length - 24, this.humidityAir.length).forEach((p, i) => this.humidityAirValue[i] = p.value);
@@ -43,7 +43,7 @@ export class HumidityComponent implements OnInit {
     let type2 = "humidityGround";
     this.api.getSensor(type)
       .subscribe(res => {
-        this.humidityGround = res.sensorvalues;
+        this.humidityGround = res;
         if (this.humidityGroundValue.length >= 24) {
           this.humidityGround.forEach((p, i) => this.humidityGroundValue[i] = p.value);
           this.humidityGround.slice(this.humidityGround.length - 24, this.humidityGround.length).forEach((p, i) => this.humidityGroundValue[i] = p.value);

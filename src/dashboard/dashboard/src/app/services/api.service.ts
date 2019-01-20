@@ -11,8 +11,8 @@ import { Sensorvalue } from '../models/sensorvalue';
 
 @Injectable()
 export class ApiService extends BaseService {
-  private baseApi: string = 'http://labfarmsql.azurewebsites.net/api/';
-  //private baseApi: string = 'http://localhost:59063/api/';
+  //private baseApi: string = 'http://labfarmsql.azurewebsites.net/api/';
+  private baseApi: string = 'http://localhost:59063/api/';
 
   constructor(private http: Http) {
     super();
@@ -29,7 +29,7 @@ export class ApiService extends BaseService {
       )
   }
 
-  getSensor(type: string): Observable<Sensor> {
+  getSensor(type: string): Observable<Sensorvalue[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
