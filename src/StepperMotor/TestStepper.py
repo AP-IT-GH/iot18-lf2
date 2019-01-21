@@ -17,4 +17,4 @@ gpio.output(ms2Pin, True)
 
 testStepper = stepper([22, 17, 23]) #[stepPin, directionPin, enablePin]
 
-testStepper.step(20000,'left'); #steps, dir, speed, stayOn
+testStepper.step(5000,'left'); #steps, dir, speed, stayOn

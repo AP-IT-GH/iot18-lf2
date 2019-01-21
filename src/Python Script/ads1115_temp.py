@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import paho.mqtt.client as paho
 import requests
-
+from Stepper import stepper
 
 # Import the ADS1x15 module.
 import Adafruit_ADS1x15
@@ -13,12 +13,24 @@ GPIO.setmode(GPIO.BCM)
 adc = Adafruit_ADS1x15.ADS1115()
 
 #Setup for water level sensor
-GPIO.setup(17, GPIO.IN)
-GPIO.setup(27, GPIO.IN)
-GPIO.setup(22, GPIO.IN)
-GPIO.setup(10, GPIO.IN)
-GPIO.setup(9, GPIO.IN)
-GPIO.setup(11, GPIO.IN)
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+#stepper pin
+ms1Pin = 5
+ms2Pin = 6
+#set gpio pins
+GPIO.setup(ms1Pin, GPIO.OUT)
+GPIO.setup(ms2Pin, GPIO.OUT)
+#set microstep resolution
+GPIO.output(ms1Pin, True)
+GPIO.output(ms2Pin, True)
+
+testStepper = stepper([13, 19, 26]) #[stepPin, directionPin, enablePin]
 
 #define the pin that goes to the circuit
 ldr_power_pin = 4
@@ -28,11 +40,17 @@ read_pin = 23
 
 ledpin = 8
 
+
+#Command booleans
+Lampcmd = False
+Pumpcmd = False
+value = ""
+
 GPIO.setup(ldr_power_pin, GPIO.OUT)
 GPIO.output(ldr_power_pin, GPIO.HIGH)
 
 GPIO.setup(ledpin, GPIO.OUT)
-GPIO.output(ledpin, GPIO.HIGH)
+
 
 waterlvlmsg = ""
 message = ("")
@@ -44,12 +62,36 @@ def on_connect(client, userdata, flags, rc):
     print("Succesfully connected with code " + str(rc))
     
 def on_message(client, userdata, msg):
-    value = str(msg.payload.decode("utf-8")).split(";")
+    global value
+    value = str(msg.payload.decode("utf-8"))
     print(value)
     
 def on_publish(msg):
     client.publish("testtopic/labfarm", msg)
     
+def on_command(msg):
+    global Lampcmd, Pumpcmd
+    if(msg == "lamp on"):
+        Lampcmd = True    
+    elif(msg == "lamp off"):
+        Lampcmd = False
+    elif(msg == "pump on"):
+        Pumpcmd = True
+    elif(msg == "pump off"):
+        Pumpcmd = False
+    elif(msg == "motor right"):
+        testStepper.step(5000,'right'); #steps, dir, speed, stayOn
+    elif(msg == "motor left"):
+        testStepper.step(5000,'left'); #steps, dir, speed, stayOn
+    if(Lampcmd == True):
+        GPIO.output(ledpin, GPIO.HIGH)
+    else:
+        GPIO.output(ledpin, GPIO.LOW)
+    #if(Pumpcmd == True):
+    
+    #else:
+
+        
 
 #create client for MQTT   
 client = paho.Client("clientId-UMPaYuqrEd")  
@@ -57,6 +99,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
 client.loop_start()
+client.subscribe("testtopic/labfarm/cmd")
 
 
 #Method for measuring LDR value
@@ -69,7 +112,7 @@ def rc_time (pin_to_circuit):
     time.sleep(0.1)
 
     #Change the pin back to input
-    GPIO.setup(pin_to_circuit, GPIO.IN)
+    GPIO.setup(pin_to_circuit, GPIO.IN, pull_up_down=GPIO.PUD_UP)
   
     #Count until the pin goes high
     while (GPIO.input(pin_to_circuit) == GPIO.LOW):
@@ -172,15 +215,17 @@ while True:
     values[5] = analog_read()
     values[6] = measure_water_level()
     print('| {0:>6.2f} | {1:>6.2f} | {2:>6.2f} | {3:>6.2f} | {4:>6.2f} | {5:>6.2f} | {6}'.format(*values))
+   
+    
     message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
-    on_publish(message)
-    #on_message()
-    
+    messagemqtt = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])+" ; "+str(Lampcmd)+" ; "+str(Pumpcmd)
+    on_publish(messagemqtt)
+    on_command(value)
     s = requests.Session()
-    url = 'http://labfarmsql.azurewebsites.net/api/data'
-    r = s.post(url, data = {'key': message})
-    
+    url = 'https://labfarmrest147.azurewebsites.net/api/data'
+    r = requests.post(url, headers = {'key': message})
+
     # Pause for second.
-    time.sleep(10)
+    time.sleep(5)
 
 quit()
