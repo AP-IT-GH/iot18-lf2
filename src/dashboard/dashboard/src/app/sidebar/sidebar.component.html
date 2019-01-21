@@ -7,8 +7,8 @@
       <div class="sidebar-infoblock">
         Lamp:
         <b>
-          <span *ngIf="lamp == 'True' " style='color:green'>{{lamp}}</span>
-          <span *ngIf="lamp == 'False' " style='color:red'>{{lamp}}</span>
+          <span *ngIf="!lamp" style='color:green'>{{lamp}}</span>
+          <span *ngIf="lamp" style='color:red'>{{lamp}}</span>
         </b>
       </div>
     </a>
