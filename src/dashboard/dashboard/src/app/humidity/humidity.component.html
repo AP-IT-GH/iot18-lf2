@@ -40,7 +40,7 @@
       </tr>
       <tr *ngFor="let s of humidityGround">
         <td>{{ s.timestamp | date:'medium':'nl-BE' }}</td>
-        <td>{{ s.value }}
+        <td>{{ s.value | number:'1.0-2'}}
           <button (click)="deleteSensorvalue(s.sensorvalueId)"></button>
         </td>
       </tr>

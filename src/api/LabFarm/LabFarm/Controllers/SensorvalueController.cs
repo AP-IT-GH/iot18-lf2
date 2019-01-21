@@ -10,6 +10,7 @@ using LabFarm.Models;
 using Microsoft.AspNetCore.Cors;
 using System.Dynamic;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace LabFarm.Controllers
 {
@@ -111,7 +112,7 @@ namespace LabFarm.Controllers
         public async Task<IActionResult> PostSensorvalues()
         {
             var sensorvalue = Request.Headers["key"].ToString();
-            //temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
+            //temp, bodemvochtigheid, ph, *, licht, luchtvochtigheid, water
             if (true == string.IsNullOrEmpty(sensorvalue))
             {
                 return BadRequest();
@@ -121,9 +122,9 @@ namespace LabFarm.Controllers
             string[] valueArray = sensorvalue.Split(" ; ");
             Sensorvalue[] sensorValues = new Sensorvalue[valueArray.Length];
             
-            for(int i = 0; i<valueArray.Length; i++)
+            for(int i = 0; i<6; i++)
             {
-                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i]), Timestamp = DateTime.Now.ToLocalTime(), SensorId = i+1, PlantId = plantId };
+                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i], CultureInfo.InvariantCulture), Timestamp = DateTime.Now.ToLocalTime(), SensorId = i+1, PlantId = plantId };
             }
 
 
