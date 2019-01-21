@@ -7,7 +7,8 @@
       <div class="sidebar-infoblock">
         Lamp:
         <b>
-          <span style='color:green'>AAN</span>
+          <span *ngIf="lamp == 'True' " style='color:green'>{{lamp}}</span>
+          <span *ngIf="lamp == 'False' " style='color:red'>{{lamp}}</span>
         </b>
       </div>
     </a>
@@ -48,7 +49,8 @@
       </div>
     </a>
 
-    <button class="button" (click)="subscribe()">Subscribe</button><br>
+    <button class="button" (click)="subscribe()">Subscribe</button>
+    <br>
     <button class="button" (click)="unsubscribe()">Unsubscribe</button>
 
   </div>

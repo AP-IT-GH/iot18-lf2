@@ -25,6 +25,7 @@ export class SidebarComponent implements OnInit {
   light: number;
   ph: number;
   water: string;
+  lamp: string;
 
   constructor(private _mqttService: MqttService, private api: ApiService) {
     this.subscribe();
@@ -48,6 +49,7 @@ export class SidebarComponent implements OnInit {
       this.light = Number(temp[3]);
       this.ph = Number(temp[2]);
       this.water = temp[6];
+      this.lamp = temp[7];
     });
     if (this._mqttService.onConnect) {
       console.log('Connected');

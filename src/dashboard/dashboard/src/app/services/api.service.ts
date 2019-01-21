@@ -61,4 +61,15 @@ export class ApiService extends BaseService {
         catchError(this.handleError)
       )
   }
+
+  deleteSensorvalue(id): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(this.baseApi + 'data/' + id, options)
+      .pipe(
+        map(res => res.json()),
+        catchError(this.handleError)
+      )
+  }
 }

@@ -70,6 +70,13 @@ export class PhValueComponent implements OnInit {
     }
   }
 
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getPh();
+      });
+  }
+
   AddChart() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',

@@ -18,7 +18,9 @@
     </tr>
     <tr *ngFor="let s of light">
       <td>{{ s.timestamp | date:'medium':'nl-BE' }}</td>
-      <td>{{ s.value }}</td>
+      <td>{{ s.value }}
+        <button (click)="deleteSensorvalue(s.sensorvalueId)"></button>
+      </td>
     </tr>
   </table>
 

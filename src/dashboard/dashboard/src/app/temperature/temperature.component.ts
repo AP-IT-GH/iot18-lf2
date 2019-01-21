@@ -69,6 +69,13 @@ export class TemperatureComponent implements OnInit {
     }
   }
 
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getTemperature();
+      });
+  }
+
   AddChart() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',

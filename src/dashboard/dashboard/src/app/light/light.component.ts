@@ -70,6 +70,13 @@ export class LightComponent implements OnInit {
     }
   }
 
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getLight();
+      });
+  }
+
   AddChart() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',

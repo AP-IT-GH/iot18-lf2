@@ -113,6 +113,13 @@ export class HumidityComponent implements OnInit {
     }
   }
 
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getHumidity();
+      });
+  }
+
   AddChartAir() {
     this.LineChart = new Chart('lineChart', {
       type: 'line',
