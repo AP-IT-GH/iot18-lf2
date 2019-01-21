@@ -14,6 +14,8 @@ export class LightComponent implements OnInit {
   light: Sensorvalue[] = [];
   lightValue: number[] = [];
   lightLabel: string[] = [];
+  date: string[] = [];
+  selectedDate: string;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -24,18 +26,48 @@ export class LightComponent implements OnInit {
     const type = 'light';
     this.api.getSensor(type)
       .subscribe(res => {
+        this.lightLabel = [];
+        this.lightValue = [];
         this.light = res;
+        this.light.forEach((p, i) => { this.lightValue[i] = p.value, this.date[i] = p.timestamp.split('T')[0] });
         if (this.lightValue.length >= 24) {
-          this.light.forEach((p, i) => this.lightValue[i] = p.value);
           this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightValue[i] = p.value);
           // tslint:disable-next-line:max-line-length
           this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
-          this.light.forEach((p, i) => this.lightValue[i] = p.value);
+          this.light.forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.date = this.date.filter((el, i, a) => i === a.indexOf(el));
+        this.AddChart();
+      });
+  }
+
+  getLightFiltered() {
+    const type = 'light';
+    this.api.getSensorByDate(type, this.selectedDate)
+      .subscribe(res => {
+        this.lightLabel = [];
+        this.lightValue = [];
+        this.light = res;
+        this.light.forEach((p, i) => this.lightValue[i] = p.value);
+        if (this.lightValue.length >= 24) {
+          this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
+          this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
           this.light.forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();
       });
+  }
+
+  getFiltered() {
+    if (this.selectedDate == "All") {
+      this.getLight();
+    }
+    else {
+      this.getLightFiltered();
+    }
   }
 
   AddChart() {
