@@ -48,6 +48,7 @@ export class SettingsComponent implements OnInit {
 
   public togglePump(pumpNr) {
     var time = ((document.getElementById(pumpNr) as HTMLInputElement).value);
+    if (time == "") { time = "0"; }
     this._mqttService.unsafePublish("testtopic/labfarm/cmd", "pump" + " " + pumpNr + " " + time, {qos: 2, retain: true});
   }
 
