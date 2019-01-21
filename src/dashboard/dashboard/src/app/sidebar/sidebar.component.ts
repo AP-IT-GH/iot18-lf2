@@ -31,7 +31,6 @@ export class SidebarComponent implements OnInit {
     this.subscribe();
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
   public ngOnDestroy() {
     if (this.subscription) {
       this.unsubscribe();
