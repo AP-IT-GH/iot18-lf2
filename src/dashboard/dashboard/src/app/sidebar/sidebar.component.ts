@@ -42,11 +42,11 @@ export class SidebarComponent implements OnInit {
       const value = message.payload.toString();
       this.messages.push(value);
       const temp = value.split(';');
-      this.temperature = Number(Number(temp[0]).toPrecision(5));
+      this.temperature = Math.round(Number(Number(temp[0]).toPrecision(5)) * 10) / 10;
       this.humidityAir = Number(temp[5]);
-      this.humidityGround = Number(temp[1]);
+      this.humidityGround = Math.round(Number(temp[1]));
       this.light = Number(temp[3]);
-      this.ph = Number(temp[2]);
+      this.ph = Math.round(0.00297 * Number(temp[2]) * 10) / 10;
       this.water = temp[6];
       this.lamp = temp[7];
     });

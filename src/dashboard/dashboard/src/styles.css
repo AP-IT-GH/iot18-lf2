@@ -95,10 +95,14 @@ tr:hover { background-color: #1a1a20; }
     background-color: #10101a;
     border: 1px solid #1a1a20;
     border-radius: 2px;
-    padding: 8px;
+    padding: 6px 8px;
     margin: 5px 0px;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     color: #ddd;
+}
+
+.textbox-select {
+    border: 1px solid #444;
 }
 
 .button {
