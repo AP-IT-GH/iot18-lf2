@@ -1,5 +1,19 @@
 <div class="content">
-  <h1>Licht</h1>
+  <h1>
+    Licht
+  
+    <div style="float:right;">
+      <select class="textbox textbox-select" [(ngModel)]="selectedDate" *ngIf="date.length > 0">
+          <option value="All">All</option>
+          <option *ngFor="let d of date" [value]="d">{{ d | date:'mediumDate':'nl-BE'}}</option>
+      </select>&nbsp;
+      
+      <button class="button" (click)="getFiltered()">Filter</button>
+    </div>
+  </h1>
+
+  
+
   <div class="content-box">
     <div style="margin: 5px auto; width:94%;">
       <canvas id="lineChart"></canvas>
@@ -13,7 +27,9 @@
     </tr>
     <tr *ngFor="let s of light">
       <td>{{ s.timestamp | date:'medium':'nl-BE' }}</td>
-      <td>{{ s.value }}</td>
+      <td>{{ s.value }}
+        <img (click)="deleteSensorvalue(s.sensorvalueId)" style="float:right; cursor: pointer;" src="../../assets/close.png" width="20px">
+      </td>
     </tr>
   </table>
 

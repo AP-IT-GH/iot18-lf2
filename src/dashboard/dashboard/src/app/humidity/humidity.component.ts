@@ -17,7 +17,9 @@ export class HumidityComponent implements OnInit {
   humidityGround: Sensorvalue[] = [];
   humidityGroundValue: number[] = [];
   humidityGroundLabel: string[] = [];
-
+  date: string[] = [];
+  dateAir: string[] = [];
+  selectedDate: string;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -29,16 +31,18 @@ export class HumidityComponent implements OnInit {
     this.api.getSensor(type)
       .subscribe(res => {
         this.humidityAir = res;
+        this.humidityAirLabel = [];
+        this.humidityAirValue = [];
+        this.humidityAir.forEach((p, i) => { this.humidityAirValue[i] = p.value, this.dateAir[i] = p.timestamp.split('T')[0] });
         if (this.humidityAirValue.length >= 24) {
-          this.humidityAir.forEach((p, i) => this.humidityAirValue[i] = p.value);
           // tslint:disable-next-line:max-line-length
           this.humidityAir.slice(this.humidityAir.length - 24, this.humidityAir.length).forEach((p, i) => this.humidityAirValue[i] = p.value);
           // tslint:disable-next-line:max-line-length
           this.humidityAir.slice(this.humidityAir.length - 24, this.humidityAir.length).forEach((p, i) => this.humidityAirLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
-          this.humidityAir.forEach((p, i) => this.humidityAirValue[i] = p.value);
           this.humidityAir.forEach((p, i) => this.humidityAirLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
+        this.dateAir = this.dateAir.filter((el, i, a) => i === a.indexOf(el));
         this.AddChartAir();
       });
 
@@ -46,17 +50,73 @@ export class HumidityComponent implements OnInit {
     this.api.getSensor(type)
       .subscribe(res => {
         this.humidityGround = res;
+        this.humidityGroundLabel = [];
+        this.humidityGroundValue = [];
+        this.humidityGround.forEach((p, i) => { this.humidityGroundValue[i] = p.value, this.date[i] = p.timestamp.split('T')[0] });
         if (this.humidityGroundValue.length >= 24) {
-          this.humidityGround.forEach((p, i) => this.humidityGroundValue[i] = p.value);
           // tslint:disable-next-line:max-line-length
           this.humidityGround.slice(this.humidityGround.length - 24, this.humidityGround.length).forEach((p, i) => this.humidityGroundValue[i] = p.value);
           // tslint:disable-next-line:max-line-length
           this.humidityGround.slice(this.humidityGround.length - 24, this.humidityGround.length).forEach((p, i) => this.humidityGroundLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
-          this.humidityGround.forEach((p, i) => this.humidityGroundValue[i] = p.value);
+          this.humidityGround.forEach((p, i) => this.humidityGroundLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.date = this.date.filter((el, i, a) => i === a.indexOf(el));
+        this.AddChartGround();
+      });
+  }
+
+  getHumidityFiltered() {
+    const type = 'humidityAir';
+    this.api.getSensorByDate(type, this.selectedDate)
+      .subscribe(res => {
+        this.humidityAir = res;
+        this.humidityAirLabel = [];
+        this.humidityAirValue = [];
+        this.humidityAir.forEach((p, i) => { this.humidityAirValue[i] = p.value });
+        if (this.humidityAirValue.length >= 24) {
+          // tslint:disable-next-line:max-line-length
+          this.humidityAir.slice(this.humidityAir.length - 24, this.humidityAir.length).forEach((p, i) => this.humidityAirValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
+          this.humidityAir.slice(this.humidityAir.length - 24, this.humidityAir.length).forEach((p, i) => this.humidityAirLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
+          this.humidityAir.forEach((p, i) => this.humidityAirLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.AddChartAir();
+      });
+
+    const type2 = 'humidityGround';
+    this.api.getSensorByDate(type, this.selectedDate)
+      .subscribe(res => {
+        this.humidityGround = res;
+        this.humidityGroundLabel = [];
+        this.humidityGroundValue = [];
+        this.humidityGround.forEach((p, i) => { this.humidityGroundValue[i] = p.value });
+        if (this.humidityGroundValue.length >= 24) {
+          // tslint:disable-next-line:max-line-length
+          this.humidityGround.slice(this.humidityGround.length - 24, this.humidityGround.length).forEach((p, i) => this.humidityGroundValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
+          this.humidityGround.slice(this.humidityGround.length - 24, this.humidityGround.length).forEach((p, i) => this.humidityGroundLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
           this.humidityGround.forEach((p, i) => this.humidityGroundLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChartGround();
+      });
+  }
+
+  getFiltered() {
+    if (this.selectedDate == "All") {
+      this.getHumidity();
+    }
+    else {
+      this.getHumidityFiltered();
+    }
+  }
+
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getHumidity();
       });
   }
 

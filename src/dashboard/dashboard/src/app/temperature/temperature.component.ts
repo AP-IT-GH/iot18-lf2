@@ -27,6 +27,8 @@ export class TemperatureComponent implements OnInit {
     const type = 'temperature';
     this.api.getSensor(type)
       .subscribe(res => {
+        this.temperatureValue = [];
+        this.temperatureLabel = [];
         this.temperature = res;
         this.temperature.forEach((p, i) => { this.temperatureValue[i] = p.value, this.date[i] = p.timestamp.split('T')[0] });
         if (this.temperatureValue.length >= 24) {
@@ -36,8 +38,6 @@ export class TemperatureComponent implements OnInit {
           this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.date = this.date.filter((el, i, a) => i === a.indexOf(el));
-        console.log(this.date);
-        console.log(this.temperature);
         this.AddChart();
       })
   }
@@ -57,6 +57,22 @@ export class TemperatureComponent implements OnInit {
           this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();
+      });
+  }
+
+  getFiltered() {
+    if (this.selectedDate == "All") {
+      this.getTemperature();
+    }
+    else {
+      this.getTemperatureFiltered();
+    }
+  }
+
+  deleteSensorvalue(id: number) {
+    this.api.deleteSensorvalue(id)
+      .subscribe(res => {
+        this.getTemperature();
       });
   }
 

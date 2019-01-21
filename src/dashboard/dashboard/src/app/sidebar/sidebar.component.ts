@@ -25,12 +25,12 @@ export class SidebarComponent implements OnInit {
   light: number;
   ph: number;
   water: string;
+  lamp: string;
 
   constructor(private _mqttService: MqttService, private api: ApiService) {
     this.subscribe();
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
   public ngOnDestroy() {
     if (this.subscription) {
       this.unsubscribe();
@@ -42,12 +42,13 @@ export class SidebarComponent implements OnInit {
       const value = message.payload.toString();
       this.messages.push(value);
       const temp = value.split(';');
-      this.temperature = Number(Number(temp[0]).toPrecision(5));
+      this.temperature = Math.round(Number(Number(temp[0]).toPrecision(5)) * 10) / 10;
       this.humidityAir = Number(temp[5]);
-      this.humidityGround = Number(temp[1]);
+      this.humidityGround = Math.round(Number(temp[1]));
       this.light = Number(temp[3]);
-      this.ph = Number(temp[2]);
+      this.ph = Math.round(0.00297 * Number(temp[2]) * 10) / 10;
       this.water = temp[6];
+      this.lamp = temp[7];
     });
     if (this._mqttService.onConnect) {
       console.log('Connected');

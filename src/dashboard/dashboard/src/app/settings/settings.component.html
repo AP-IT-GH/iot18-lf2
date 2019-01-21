@@ -1,16 +1,19 @@
 <div class="content">
   <h1>Instellingen</h1>
 
-  <ui-switch size="small" color="#f92"></ui-switch> <span class="switch-element">Lamp</span><br>
+  <ui-switch size="small" color="#f92" (change)="lampToggle($event)"></ui-switch> <span class="switch-element">Lamp</span><br>
+
+  <button class="button" (click)="moveMotor('left')">&#11013; Motor links</button>&nbsp;
+  <button class="button" (click)="moveMotor('right')">Motor rechts &#11157;</button>
 
   <hr>
   <p>
-    Geef plant 1 manueel <input type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
-    <button class="button">Uitvoeren</button><br>
-    Geef plant 2 manueel <input type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
-    <button class="button">Uitvoeren</button><br>
-    Geef plant 3 manueel <input type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
-    <button class="button">Uitvoeren</button><br>
+    Geef plant 1 manueel <input id="p1" type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
+    <button class="button" (click)="togglePump('p1')">Uitvoeren</button><br>
+    Geef plant 2 manueel <input id="p2" type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
+    <button class="button" (click)="togglePump('p2')">Uitvoeren</button><br>
+    Geef plant 3 manueel <input id="p3" type="number" class="textbox" value="10" size="4" step="10" min="10" max="5000"> ml water. 
+    <button class="button" (click)="togglePump('p3')">Uitvoeren</button><br>
   </p>
   <hr>
   <p>
