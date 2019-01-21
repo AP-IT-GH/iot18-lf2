@@ -19,14 +19,14 @@ export class ApiService extends BaseService {
   }
 
   getLabfarm(id: number): Observable<Labfarm> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.get(this.baseApi + 'labfarm/' + id, options)
       .pipe(
         map(res => res.json()),
         catchError(this.handleError)
-      )
+      );
   }
 
   getSensor(type: string): Observable<Sensorvalue[]> {
@@ -37,18 +37,18 @@ export class ApiService extends BaseService {
       .pipe(
         map(res => res.json()),
         catchError(this.handleError)
-      )
+      );
   }
 
   getOverview(): Observable<Sensorvalue[]> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.get(this.baseApi + 'data', options)
       .pipe(
         map(res => res.json()),
         catchError(this.handleError)
-      )
+      );
   }
 
   getSensorByDate(type, date): Observable<Sensorvalue[]> {

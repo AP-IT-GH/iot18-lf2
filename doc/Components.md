@@ -11,9 +11,11 @@
 * Water level sensor          --->        Eigen PCB  
 * Water pump                  --->        SHURflo 1000 
 * Lights                      --->        adafruit RGB ledstrip
+* Backup battery              --->        PC batterij 12V
 
-## Overview unknown components 
-* Backup battery 
+
+
+
 
                         
                         

@@ -15,8 +15,8 @@ export class SidebarComponent implements OnInit {
   overview: Sensorvalue[] = [];
   livedata: number[] = [];
 
-  //temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
-  topic: string = 'testtopic/labfarm'
+  // temp, bodemvochtigheid, *, *, licht, luchtvochtigheid, water
+  topic = 'testtopic/labfarm';
   private subscription: Subscription;
   public messages: string[] = [];
   temperature: number;
@@ -30,16 +30,18 @@ export class SidebarComponent implements OnInit {
     this.subscribe();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   public ngOnDestroy() {
-    if (this.subscription)
+    if (this.subscription) {
       this.unsubscribe();
+    }
   }
 
   public subscribe() {
     this.subscription = this._mqttService.observe(this.topic).subscribe((message: IMqttMessage) => {
-      let value = message.payload.toString();
+      const value = message.payload.toString();
       this.messages.push(value);
-      let temp = value.split(';');
+      const temp = value.split(';');
       this.temperature = Number(Number(temp[0]).toPrecision(5));
       this.humidityAir = Number(temp[5]);
       this.humidityGround = Number(temp[1]);
@@ -47,15 +49,17 @@ export class SidebarComponent implements OnInit {
       this.ph = Number(temp[2]);
       this.water = temp[6];
     });
-    if (this._mqttService.onConnect)
-      console.log('Connected')
+    if (this._mqttService.onConnect) {
+      console.log('Connected');
+    }
   }
 
   public unsubscribe() {
     this.subscription.unsubscribe();
-    if (this._mqttService.onClose)
-      console.log('Disconnected')
-  };
+    if (this._mqttService.onClose) {
+      console.log('Disconnected');
+    }
+  }
 
   ngOnInit() {
     this.getOverview();
@@ -65,7 +69,7 @@ export class SidebarComponent implements OnInit {
     this.api.getOverview()
       .subscribe(res => {
         this.overview = res;
-        Object.values(this.overview).forEach((p, i) => this.livedata[i] = p.value)
+        Object.values(this.overview).forEach((p, i) => this.livedata[i] = p.value);
 
         // Nummersarray:
         // 1 = Temperatuur
@@ -73,6 +77,6 @@ export class SidebarComponent implements OnInit {
         // 3 = Bodemvochtigheid
         // 4 = Licht
         // 5 = pH-waarde
-      })
+      });
   }
 }

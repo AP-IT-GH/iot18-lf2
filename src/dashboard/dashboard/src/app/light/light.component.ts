@@ -21,20 +21,21 @@ export class LightComponent implements OnInit {
   }
 
   getLight() {
-    let type = "light";
+    const type = 'light';
     this.api.getSensor(type)
       .subscribe(res => {
         this.light = res;
         if (this.lightValue.length >= 24) {
           this.light.forEach((p, i) => this.lightValue[i] = p.value);
           this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
           this.light.slice(this.light.length - 24, this.light.length).forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
           this.light.forEach((p, i) => this.lightValue[i] = p.value);
           this.light.forEach((p, i) => this.lightLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();
-      })
+      });
   }
 
   AddChart() {
@@ -47,13 +48,13 @@ export class LightComponent implements OnInit {
           data: this.lightValue,
           fill: false,
           lineTension: 0.2,
-          borderColor: "#f92",
+          borderColor: '#f92',
           borderWidth: 1.5
         }]
       },
       options: {
         title: {
-          text: "Line Chart",
+          text: 'Line Chart',
           display: false
         }
       },
@@ -64,7 +65,7 @@ export class LightComponent implements OnInit {
           }
         }]
       }
-    })
+    });
   }
 
 }

@@ -1,13 +1,18 @@
 import time
 import RPi.GPIO as GPIO
 import paho.mqtt.client as paho
-import getch
+import requests
+
 
 # Import the ADS1x15 module.
 import Adafruit_ADS1x15
 
 GPIO.setmode(GPIO.BCM)
 
+# Create an ADS1115 ADC (16-bit) instance.
+adc = Adafruit_ADS1x15.ADS1115()
+
+#Setup for water level sensor
 GPIO.setup(17, GPIO.IN)
 GPIO.setup(27, GPIO.IN)
 GPIO.setup(22, GPIO.IN)
@@ -15,13 +20,19 @@ GPIO.setup(10, GPIO.IN)
 GPIO.setup(9, GPIO.IN)
 GPIO.setup(11, GPIO.IN)
 
-# Create an ADS1115 ADC (16-bit) instance.
-adc = Adafruit_ADS1x15.ADS1115()
-
 #define the pin that goes to the circuit
+ldr_power_pin = 4
 pin_to_circuit = 7
 charge_pin = 18
 read_pin = 23
+
+ledpin = 8
+
+GPIO.setup(ldr_power_pin, GPIO.OUT)
+GPIO.output(ldr_power_pin, GPIO.HIGH)
+
+GPIO.setup(ledpin, GPIO.OUT)
+GPIO.output(ledpin, GPIO.HIGH)
 
 waterlvlmsg = ""
 message = ("")
@@ -34,9 +45,11 @@ def on_connect(client, userdata, flags, rc):
     
 def on_message(client, userdata, msg):
     value = str(msg.payload.decode("utf-8")).split(";")
+    print(value)
     
 def on_publish(msg):
     client.publish("testtopic/labfarm", msg)
+    
 
 #create client for MQTT   
 client = paho.Client("clientId-UMPaYuqrEd")  
@@ -130,9 +143,18 @@ print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} | {4:>6} | {5:>6} | {6:>6} |'.format(
 print('-' * 56)
 # Main loop.
 while True:
-    #c = getch.getch()
     # Read all the ADC channel values in a list.
     values = [0]*7
+    
+    #values[0] = 28
+    #values[1] = 35
+    #values[2] = 34
+    #values[3] = 41
+    #values[4] = 20
+    #values[5] = 10
+    #values[6] = 25
+    
+    #message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
     for i in range(4):
         # Read the specified ADC channel using the previously set gain value.
         values[i] = adc.read_adc(i, gain=GAIN)
@@ -152,10 +174,13 @@ while True:
     print('| {0:>6.2f} | {1:>6.2f} | {2:>6.2f} | {3:>6.2f} | {4:>6.2f} | {5:>6.2f} | {6}'.format(*values))
     message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
     on_publish(message)
+    #on_message()
     
-    if(c == "q"):
-      break
+    s = requests.Session()
+    url = 'http://labfarmsql.azurewebsites.net/api/data'
+    r = s.post(url, data = {'key': message})
+    
     # Pause for second.
-    time.sleep(0.5)
+    time.sleep(10)
 
 quit()

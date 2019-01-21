@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
       .subscribe(res => {
         this.data = res;
         console.log(this.data);
-      })
+      });
   }
 
 }

@@ -21,20 +21,21 @@ export class PhValueComponent implements OnInit {
   }
 
   getPh() {
-    let type = "ph";
+    const type = 'ph';
     this.api.getSensor(type)
       .subscribe(res => {
         this.ph = res;
         if (this.phValue.length >= 24) {
           this.ph.forEach((p, i) => this.phValue[i] = p.value);
           this.ph.slice(this.ph.length - 24, this.ph.length).forEach((p, i) => this.phValue[i] = p.value);
+          // tslint:disable-next-line:max-line-length
           this.ph.slice(this.ph.length - 24, this.ph.length).forEach((p, i) => this.phLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
           this.ph.forEach((p, i) => this.phValue[i] = p.value);
           this.ph.forEach((p, i) => this.phLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();
-      })
+      });
   }
 
   AddChart() {
@@ -47,13 +48,13 @@ export class PhValueComponent implements OnInit {
           data: this.phValue,
           fill: false,
           lineTension: 0.2,
-          borderColor: "#f92",
+          borderColor: '#f92',
           borderWidth: 1.5
         }]
       },
       options: {
         title: {
-          text: "Line Chart",
+          text: 'Line Chart',
           display: false
         }
       },
@@ -64,7 +65,7 @@ export class PhValueComponent implements OnInit {
           }
         }]
       }
-    })
+    });
   }
 
 }
