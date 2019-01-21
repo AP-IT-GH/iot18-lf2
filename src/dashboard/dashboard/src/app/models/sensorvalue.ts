@@ -8,7 +8,7 @@ export class Sensorvalue {
     Temperature: number;
     sensorvalueId: number;
     value: number;
-    timestamp: number;
+    timestamp: string;
     plantId: number;
     plant: Plant;
 }

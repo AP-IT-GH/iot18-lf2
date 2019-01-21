@@ -14,6 +14,8 @@ export class TemperatureComponent implements OnInit {
   temperature: Sensorvalue[] = [];
   temperatureValue: number[] = [];
   temperatureLabel: string[] = [];
+  date: string[] = [];
+  selectedDate: string;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -26,12 +28,32 @@ export class TemperatureComponent implements OnInit {
     this.api.getSensor(type)
       .subscribe(res => {
         this.temperature = res;
+        this.temperature.forEach((p, i) => { this.temperatureValue[i] = p.value, this.date[i] = p.timestamp.split('T')[0] });
         if (this.temperatureValue.length >= 24) {
-          this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
           this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureValue[i] = p.value);
           this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         } else {
-          this.temperature.forEach((p, i) => this.temperatureValue[i] = p.value);
+          this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        }
+        this.date = this.date.filter((el, i, a) => i === a.indexOf(el));
+        console.log(this.date);
+        console.log(this.temperature);
+        this.AddChart();
+      })
+  }
+
+  getTemperatureFiltered() {
+    let type = "temperature";
+    this.api.getSensorByDate(type, this.selectedDate)
+      .subscribe(res => {
+        this.temperatureValue = [];
+        this.temperatureLabel = [];
+        this.temperature = res;
+        this.temperature.forEach((p, i) => { this.temperatureValue[i] = p.value });
+        if (this.temperatureValue.length >= 24) {
+          this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureValue[i] = p.value);
+          this.temperature.slice(this.temperature.length - 24, this.temperature.length).forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
+        } else {
           this.temperature.forEach((p, i) => this.temperatureLabel[i] = p.timestamp.toString().slice(11, 13) + 'u');
         }
         this.AddChart();

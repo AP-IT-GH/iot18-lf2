@@ -1,5 +1,9 @@
 <div class="content">
   <h1>Temperatuur</h1>
+  <select [(ngModel)]="selectedDate" *ngIf="date.length > 0">
+    <option *ngFor="let d of date" [value]="d">{{ d | date:'mediumDate':'nl-BE'}}</option>
+  </select>
+  <button (click)="getTemperatureFiltered()">Filter</button>
   <div class="content-box">
     <div style="margin: 5px auto; width:94%;">
       <canvas id="lineChart"></canvas>

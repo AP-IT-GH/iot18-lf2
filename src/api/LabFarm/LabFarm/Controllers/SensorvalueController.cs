@@ -57,23 +57,18 @@ namespace LabFarm.Controllers
             return new OkObjectResult(sensor);
         }
 
-        // GET: api/data/(type)/(id)
-        [HttpGet("{type}/{id}")]
-        public async Task<IActionResult> GetSensorvalue([FromRoute] int id)
+        // GET: api/data/(type)
+        [HttpGet("{type}/{date}")]
+        public async Task<IActionResult> GetSensorvaluesByDate([FromRoute] string type, string date)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var sensorvalue = await _context.Sensorvalues.SingleOrDefaultAsync(m => m.SensorvalueId == id);
-
-            if (sensorvalue == null)
+            DateTime time = DateTime.Parse(date);
+            var sensor = await _context.Sensorvalues.Where(t => t.Sensor.SensorType.Equals(type) && t.Timestamp.Date == time).OrderBy(o => o.Timestamp).ToListAsync();
+            if (sensor == null)
             {
                 return NotFound();
             }
 
-            return Ok(sensorvalue);
+            return new OkObjectResult(sensor);
         }
 
         // PUT: api/data/(id)
