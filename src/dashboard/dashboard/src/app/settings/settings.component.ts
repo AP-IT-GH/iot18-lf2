@@ -52,6 +52,10 @@ export class SettingsComponent implements OnInit {
     this._mqttService.unsafePublish("testtopic/labfarm/cmd", "pump" + " " + pumpNr + " " + time, {qos: 2, retain: true});
   }
 
+  public takePicture(plantNr) {
+    this._mqttService.unsafePublish("testtopic/labfarm/cmd", "foto" + " " + plantNr, {qos: 2, retain: true});
+  }
+
   public unsubscribe() {
     this.subscription.unsubscribe();
     if (this._mqttService.onClose)
