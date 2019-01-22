@@ -70,7 +70,7 @@ in een normale huiskamer kan een extreem hoge of lage vochtigheidsgraad het gevo
   
 ---
   
-![Diagram](/doc/img/EntityRelationshipDiagram.jpeg)
+![Diagram](/doc/img/ER_diagram.png)
 #### Schema's van het product
 
 ![Foto](/doc/img/foto_schema.PNG) 
