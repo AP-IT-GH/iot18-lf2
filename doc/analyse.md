@@ -130,7 +130,7 @@ Zet de netspanning om naar 12V
 ## Inventarisatie Software 
 
 Angular 6 & Node.js  
-Python
+Python\
 Microsoft azure
 
 ## Test document
