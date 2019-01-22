@@ -23,7 +23,7 @@ import { TestComponent } from './test/test.component';
 import { MqttComponent } from './mqtt/mqtt.component';
 import { FormsModule } from '@angular/forms';
 import { IMqttMessage, MqttModule, IMqttServiceOptions } from '../../node_modules/ngx-mqtt';
-
+import { ImgurService } from './services/imgur.service';
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'broker.mqttdashboard.com',
   port: 8000,
@@ -68,7 +68,8 @@ import { ClarifaiService } from './clarifai_service/clarifai.service';
   ],
   providers: [
     ClarifaiService,
-    ApiService
+    ApiService,
+    ImgurService
   ],
   bootstrap: [AppComponent]
 })

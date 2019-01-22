@@ -8,6 +8,12 @@
     <span style="color:#667; font-size:12px;">Voor het manueel nemen van een foto, ga naar de besturings-pagina.</span>
     <br>
     <br>
+    <select id="select" class="textbox textbox-select" (change)="pullData($event);">
+      <option value="0">Labfarm 1</option>
+      <option value="1">Labfarm 2</option>
+      <option value="2">Labfarm 3</option>
+    </select> 
+    <br>
     <div class="col-4">
       <div class="col-inner">
         Gezondheid:
@@ -32,34 +38,33 @@
         </div>
       </div>
     </div>
-    <button class="button" (click)="this.Auth.login()">Imgur</button>
     <div id="imgContainer">
-      <div class="dynamic_image_block">
+      <div class="dynamic_image_block" *ngIf="Labfarm1.length > 0">
         <h2>Plant 1</h2>
-        <img class="dynamic_image" src="LabfarmUrl[0]">
+        <img class="dynamic_image" src="{{Labfarm1[Index1]}}">
         <div class="image_control">
-            <span (click)="nextImage($event, 1)" class="fas fa-backward"></span>
-            <span (click)="previousImage($event, 1)" class="fas fa-forward"></span>
+            <span (click)="previousImage($event, 1)" class="fas fa-backward"></span>
+            <span (click)="nextImage($event, 1)" class="fas fa-forward"></span>
             <span (click)="playImage($event, 1)" class="fas fa-play"></span>
             <span (click)="stopImage($event, 1)" class="fas fa-stop"></span>
         </div>
       </div>
-      <div class="dynamic_image_block">
+      <div class="dynamic_image_block" *ngIf="Labfarm2.length  > 0">
         <h2>Plant 2</h2>
-        <img class="dynamic_image" src="ActiveUrl[1]">
+        <img class="dynamic_image" src="{{Labfarm2[Index2]}}">
         <div class="image_control">
-            <span (click)="nextImage($event, 2)" class="fas fa-backward"></span>
-            <span (click)="previousImage($event, 2)" class="fas fa-forward"></span>
+            <span (click)="previousImage($event, 2)" class="fas fa-backward"></span>
+            <span (click)="nextImage($event, 2)" class="fas fa-forward"></span>
             <span (click)="playImage($event, 2)" class="fas fa-play"></span>
             <span (click)="stopImage($event, 2)" class="fas fa-stop"></span>
         </div>
       </div>
-      <div class="dynamic_image_block">
+      <div class="dynamic_image_block" *ngIf="Labfarm3.length > 0">
         <h2>Plant 3</h2>
-        <img class="dynamic_image" src="ActiveUrl[2]">
+        <img class="dynamic_image" src="{{Labfarm3[Index3]}}">
         <div class="image_control">
-            <span (click)="nextImage($event, 3)" class="fas fa-backward"></span>
-            <span (click)="previousImage($event, 3)" class="fas fa-forward"></span>
+            <span (click)="previousImage($event, 3)" class="fas fa-backward"></span>
+            <span (click)="nextImage($event, 3)" class="fas fa-forward"></span>
             <span (click)="playImage($event, 3)" class="fas fa-play"></span>
             <span (click)="stopImage($event, 3)" class="fas fa-stop"></span>
         </div>

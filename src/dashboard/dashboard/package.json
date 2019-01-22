@@ -27,6 +27,7 @@
     "buffer": "^5.2.1",
     "chart.js": "^2.7.3",
     "clarifai": "^2.9.0",
+    "client-oauth2": "^4.2.3",
     "color-convert": "^1.9.3",
     "core-js": "^2.5.4",
     "hex2dec": "^1.1.0",
