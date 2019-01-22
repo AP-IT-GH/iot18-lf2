@@ -4,21 +4,21 @@
       <div class="col-inner">
         Temperatuur
         <br>
-        <span style='font-size:64px;'>{{ data.temperature.value }} °c</span>
+        <span style='font-size:64px;'>{{ data.temperature.value | number:'1.0-2' }} °c</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/humidity']">
       <div class="col-inner">
         Luchtvochtigheid
         <br>
-        <span style='font-size:64px;'>{{ data.humidityAir.value }}</span>
+        <span style='font-size:64px;'>{{ data.humidityAir.value | number:'1.0-2' }} %</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/humidity']">
       <div class="col-inner">
         Bodemvochtigheid
         <br>
-        <span style='font-size:64px;'>{{ data.humidityGround.value }}</span>
+        <span style='font-size:64px;'>{{ data.humidityGround.value | number:'1.0-2' }} %</span>
       </div>
     </div>
 
@@ -26,21 +26,21 @@
       <div class="col-inner">
         Licht
         <br>
-        <span style='font-size:64px;'>{{ data.light.value }}</span>
+        <span style='font-size:64px;'>{{ data.light.value | number:'1.0-2' }}</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/ph-value']">
       <div class="col-inner">
         pH-waarde
         <br>
-        <span style='font-size:64px;'>{{ data.ph.value }}</span>
+        <span style='font-size:64px;'>{{ data.ph.value | number:'1.0-2' }}</span>
       </div>
     </div>
     <div class="col-4 center-content col-hover" [routerLink]="['/settings']">
       <div class="col-inner">
         Water
         <br>
-        <span style='font-size:64px;'>{{ data.water }}</span>
+        <span style='font-size:64px;'>{{ data.water.value | number:'1.0-2' }}</span>
       </div>
     </div>
   </div>

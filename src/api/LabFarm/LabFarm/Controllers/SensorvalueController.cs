@@ -120,11 +120,12 @@ namespace LabFarm.Controllers
 
             int plantId = 1;
             string[] valueArray = sensorvalue.Split(" ; ");
-            Sensorvalue[] sensorValues = new Sensorvalue[valueArray.Length];
+            Sensorvalue[] sensorValues = new Sensorvalue[valueArray.Length-3];
             
-            for(int i = 0; i<6; i++)
+            for(int i = 0; i<valueArray.Length - 3; i++)
             {
-                sensorValues[i] = new Sensorvalue { Value = double.Parse(valueArray[i], CultureInfo.InvariantCulture), Timestamp = DateTime.Now.ToLocalTime(), SensorId = i+1, PlantId = plantId };
+                double inputValue = double.Parse(valueArray[i], CultureInfo.InvariantCulture);
+                sensorValues[i] = new Sensorvalue { Value = Math.Round(inputValue, 2, MidpointRounding.AwayFromZero), Timestamp = DateTime.Now.ToLocalTime(), SensorId = i+1, PlantId = plantId };
             }
 
 
