@@ -35,6 +35,7 @@ export class NotificationComponent implements OnInit {
         // 3 = Bodemvochtigheid
         // 4 = Licht
         // 5 = pH-waarde
+        // 6 = Watervoorraad
 
         if (this.livedata[1] > 25) {
           this.warning = true;
@@ -95,6 +96,17 @@ export class NotificationComponent implements OnInit {
             this.severe = true;
             this.warning = false;
             this.notifmsg[3] = 'De bodem is zeer basisch. (pH ' + this.livedata[5] + ')';
+          }
+        }
+
+        if (this.livedata[6] < 21) {
+          this.warning = true;
+          this.notifmsg[4] = 'Watervoorraad is bijna leeg. (pH ' + this.livedata[6] + ')';
+          this.link = '#';
+          if (this.livedata[6] < 1) {
+            this.severe = true;
+            this.warning = false;
+            this.notifmsg[4] = 'Watervoorraad is leeg!';
           }
         }
       });
