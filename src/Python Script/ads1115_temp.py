@@ -2,6 +2,8 @@ import time
 import RPi.GPIO as GPIO
 import paho.mqtt.client as paho
 import requests
+from datetime import datetime, timedelta
+import subprocess
 from Stepper import stepper
 
 # Import the ADS1x15 module.
@@ -53,8 +55,11 @@ GPIO.setup(ledpin, GPIO.OUT)
 
 
 waterlvlmsg = ""
+waterlvlValue = ""
 message = ("")
 c = ""
+timeCheck = True
+dt = 0
 
 #Methods required for MQTT
 def on_connect(client, userdata, flags, rc):
@@ -71,6 +76,12 @@ def on_publish(msg):
     
 def on_command(msg):
     global Lampcmd, Pumpcmd
+    if(msg == "foto b1"):
+        cameraScript1()
+    elif(msg == "foto b2"):
+        cameraScript2()
+    elif(msg == "foto b3")
+        cameraScript3()
     if(msg == "lamp on"):
         Lampcmd = True    
     elif(msg == "lamp off"):
@@ -85,7 +96,7 @@ def on_command(msg):
         testStepper.step(5000,'left'); #steps, dir, speed, stayOn
     if(Lampcmd == True):
         GPIO.output(ledpin, GPIO.HIGH)
-    else:
+    elif(Lampcmd == False):
         GPIO.output(ledpin, GPIO.LOW)
     #if(Pumpcmd == True):
     
@@ -143,23 +154,51 @@ def analog_read():
 #Method for measuring water level sensor
 
 def measure_water_level():
-
+    global waterlvlValue
     if GPIO.input(11) == 1:
       waterlvlmsg = "85% - 100%"
+      waterlvlValue = 100
     elif GPIO.input(9) == 1:
       waterlvlmsg = "70% - 85%"
+      waterlvlValue = 80
     elif GPIO.input(10) == 1:
       waterlvlmsg = "55% - 70%"
+      waterlvlValue = 65
     elif GPIO.input(22) == 1:
       waterlvlmsg = "40% - 55%"
+      waterlvlValue = 50
     elif GPIO.input(27)== 1:
       waterlvlmsg = "25% - 40%"
+      waterlvlValue = 35
     elif GPIO.input(17)== 1:
       waterlvlmsg = ">10% - 25%"
+      waterlvlValue = 15
     else:
       waterlvlmsg = "error"
+      waterlvlValue = 0
       
     return waterlvlmsg
+
+def cameraScript1() {
+    camera1 = "python3 camera1.py"  # launch script using bash, 1 = enroll, 2 = verify
+
+    process = subprocess.Popen(camera1.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()  # receive output from the python3 script
+}
+
+def cameraScript2() {
+    camera2 = "python3 camera2.py"  # launch script using bash, 1 = enroll, 2 = verify
+
+    process = subprocess.Popen(camera2.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()  # receive output from the python3 script
+}
+
+def cameraScript3() {
+    camera3 = "python3 camera3.py"  # launch script using bash, 1 = enroll, 2 = verify
+
+    process = subprocess.Popen(camera3.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()  # receive output from the python3 script
+}
     
 def quit():
     GPIO.cleanup()
@@ -197,7 +236,6 @@ while True:
     #values[5] = 10
     #values[6] = 25
     
-    #message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
     for i in range(4):
         # Read the specified ADC channel using the previously set gain value.
         values[i] = adc.read_adc(i, gain=GAIN)
@@ -217,15 +255,23 @@ while True:
     print('| {0:>6.2f} | {1:>6.2f} | {2:>6.2f} | {3:>6.2f} | {4:>6.2f} | {5:>6.2f} | {6}'.format(*values))
    
     
-    message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])
+    message = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(waterlvlValue)
     messagemqtt = str(values[0])+" ; "+str(values[1])+" ; "+str(values[2])+" ; "+str(values[3])+" ; "+str(values[4])+" ; "+str(values[5])+" ; "+str(values[6])+" ; "+str(Lampcmd)+" ; "+str(Pumpcmd)
     on_publish(messagemqtt)
     on_command(value)
-    s = requests.Session()
-    url = 'https://labfarmrest147.azurewebsites.net/api/data'
-    r = requests.post(url, headers = {'key': message})
+
+    # Check every 20 min
+    if timeCheck:
+        dt = datetime.now() + timedelta(minutes=20)
+        timeCheck = False
+
+    if datetime.now() > dt:
+        timeCheck = True
+        s = requests.Session()
+        url = 'https://labfarmrest147.azurewebsites.net/api/data'
+        r = requests.post(url, headers = {'key': message})
 
     # Pause for second.
-    time.sleep(5)
+    time.sleep(1)
 
 quit()
